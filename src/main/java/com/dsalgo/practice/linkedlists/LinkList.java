@@ -67,6 +67,10 @@ public class LinkList {
         return first;
     }
 
+    public void setFirst(Link first) {
+        this.first = first;
+    }
+
     public static void main(String[] args) {
         LinkList list = new LinkList();
         System.out.println("List empty : " + list.isEmpty());

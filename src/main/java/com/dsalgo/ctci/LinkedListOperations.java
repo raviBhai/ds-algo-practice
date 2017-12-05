@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.dsalgo.practice.linkedlists.LinkList;
 import com.dsalgo.practice.linkedlists.single.Link;
+import com.dsalgo.practice.stacksqueues.ArrayStack;
+import com.dsalgo.practice.stacksqueues.Stack;
 
 public class LinkedListOperations {
     public static void main(String[] args) {
@@ -13,8 +15,341 @@ public class LinkedListOperations {
 
         //returnKthToTheLastFromLinkedList();
 
-        deleteMiddleNode();
+        //deleteMiddleNode();
+
+        //partition();
+
+        //reverse();
+
+        //sumOfNumbers();
+
+        isPalindrome();
     }
+
+    private static void isPalindrome() {
+        LinkList list1 = new LinkList();
+        list1.insertFirst(1);
+        list1.insertFirst(2);
+        list1.insertFirst(3);
+        list1.insertFirst(3);
+        list1.insertFirst(2);
+        list1.insertFirst(1);
+        list1.displayList();
+        System.out.println();
+
+        isPalindromeUsingReversal(list1);
+        isPalindromeUsingStack(list1);
+    }
+
+    private static void isPalindromeUsingStack(LinkList list) {
+        boolean isPalindrome = true;
+        Stack<Integer> stack = new ArrayStack<Integer>(10);
+        Link slow = list.getFirst();
+        Link fast = list.getFirst();
+
+        //fast is set to null when list length is even. It is set to last link when lenght is odd.
+        while (fast != null && fast.next != null) {
+            stack.push(slow.data);
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        //if list length is odd, then skip middle element
+        if (fast != null) {
+            slow = slow.next;
+        }
+
+        while (slow != null) {
+            Integer data = stack.pop();
+            if (data.intValue() != slow.data) {
+                isPalindrome = false;
+            }
+            slow = slow.next;
+        }
+        System.out.println("Is Palindrome: " + isPalindrome);
+    }
+
+    private static void isPalindromeUsingReversal(LinkList list1) {
+        Link head1 = list1.getFirst();
+        Link head2 = reverseAndClone(head1);
+        boolean isPalindrome = isEqual(head1, head2);
+        System.out.println("Is Palindrome: " + isPalindrome);
+    }
+
+    private static boolean isEqual(Link head1, Link head2) {
+        while (head1 != null && head2 != null) {
+            if (head1.data != head2.data) {
+                return false;
+            }
+            head1 = head1.next;
+            head2 = head2.next;
+        }
+        return true;
+    }
+
+    private static Link reverseAndClone(Link link) {
+        Link head = null;
+        while (link != null) {
+            Link n = new Link(link.data);
+            if (head != null) {
+                n.next = head;
+            }
+            head = n;
+            link = link.next;
+        }
+        return head;
+    }
+
+    private static void sumOfNumbers() {
+        LinkList list1 = new LinkList();
+        list1.insertFirst(6);
+        list1.insertFirst(1);
+        list1.insertFirst(7);
+        list1.displayList();
+        System.out.println();
+
+        LinkList list2 = new LinkList();
+        list2.insertFirst(4);
+        list2.insertFirst(9);
+        list2.insertFirst(5);
+        list2.displayList();
+        System.out.println();
+
+        //617 + 495
+        sumBackward(list1, list2);
+
+        //716 + 594
+        sumForwardWithRecursion(list1, list2);
+
+        //716 + 594
+        sumForwardWithStack(list1, list2);
+    }
+
+    private static void sumForwardWithStack(LinkList list1, LinkList list2) {
+        Stack<Integer> stack1 = getStackFrom(list1);
+        Stack<Integer> stack2 = getStackFrom(list2);
+        int d1, d2, sum = 0, carry = 0;
+        Link head = null;
+        while (!stack1.isEmpty() || !stack2.isEmpty()) {
+            if (!stack1.isEmpty()) {
+                d1 = stack1.pop();
+                sum = d1;
+            }
+            if (!stack2.isEmpty()) {
+                d2 = stack2.pop();
+                sum = sum + d2;
+            }
+            sum = sum + carry;
+            carry = sum / 10;
+            sum = sum % 10;
+
+            Link n = new Link(sum);
+            if (head != null) {
+                n.next = head;
+            }
+            head = n;
+        }
+        if (carry != 0) {
+            Link n = new Link(carry);
+            n.next = head;
+            head = n;
+        }
+        System.out.println();
+        head.displayChain();
+    }
+
+    private static Stack<Integer> getStackFrom(LinkList list) {
+        Link current = list.getFirst();
+        Stack<Integer> stack = new ArrayStack<Integer>(5);
+        while (current != null) {
+            stack.push(current.data);
+            current = current.next;
+        }
+        return stack;
+    }
+
+    private static void sumForwardWithRecursion(LinkList list1, LinkList list2) {
+        int l1 = length(list1);
+        int l2 = length(list2);
+
+        if (l1 < l2) {
+            padFront(list1, l2 - l1);
+        } else {
+            padFront(list2, l1 - l2);
+        }
+        PartialSum partialSum = new PartialSum();
+        partialSum = sumWithRecursion(list1.getFirst(), list2.getFirst(), partialSum);
+        if (partialSum.carry != 0) {
+            Link n = new Link(partialSum.carry);
+            n.next = partialSum.head;
+            partialSum.head = n;
+        }
+        partialSum.head.displayChain();
+    }
+
+    private static PartialSum sumWithRecursion(Link current1, Link current2, PartialSum partialSum) {
+        if (current1 == null && current2 == null) {
+            return null;
+        }
+        sumWithRecursion(current1.next, current2.next, partialSum);
+        int sum = current1.data + current2.data + partialSum.carry;
+        partialSum.carry = sum / 10;
+        sum = sum % 10;
+        Link n = new Link(sum);
+
+        if (partialSum.head != null) {
+            n.next = partialSum.head;
+        }
+        partialSum.head = n;
+        return partialSum;
+    }
+
+    private static int length(LinkList list) {
+        int length = 0;
+        Link current = list.getFirst();
+        while (current != null) {
+            current = current.next;
+            length++;
+        }
+        return length;
+    }
+
+    private static void padFront(LinkList list, int length) {
+        for (int i = 0; i < length; i++) {
+            list.insertFirst(0);
+        }
+    }
+
+
+    private static void sumBackward(LinkList list1, LinkList list2) {
+        LinkList result = new LinkList();
+        Link current1 = list1.getFirst();
+        Link current2 = list2.getFirst();
+        Link head = null, tail = null;
+        int d1 = 0, d2 = 0, sum = 0, carry = 0;
+        while (current1 != null || current2 != null) {
+            if (current1 != null) {
+                d1 = current1.data;
+                sum = d1;
+                current1 = current1.next;
+            }
+            if (current2 != null) {
+                d2 = current2.data;
+                sum = sum + d2;
+                current2 = current2.next;
+            }
+            sum = sum + carry;
+            carry = sum / 10;
+            sum = sum % 10;
+            result.insertFirst(sum);
+            Link n = new Link(sum);
+            if (tail != null) {
+                tail.next = n;
+            }
+            if (head == null) {
+                head = n;
+            }
+            tail = n;
+            sum = 0;
+        }
+        if (carry != 0) {
+            result.insertFirst(carry);
+            Link n = new Link(carry);
+            tail.next = n;
+        }
+        System.out.println("Display list:");
+        head.displayChain();
+        System.out.println();
+        result.displayList();
+        System.out.println();
+    }
+
+    private static void reverse() {
+        LinkList list = new LinkList();
+        System.out.println("List empty : " + list.isEmpty());
+
+        list.insertFirst(1);
+        list.insertFirst(2);
+        list.insertFirst(10);
+        list.insertFirst(5);
+        list.insertFirst(8);
+        list.insertFirst(5);
+        list.insertFirst(3);
+
+        list.displayList();
+
+        reverse3(list);
+        System.out.println();
+        System.out.println("Reversed list:");
+        list.displayList();
+    }
+
+    private static void reverse3(LinkList list) {
+        Link previous = null, next = null, current = list.getFirst();
+        while (current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        list.setFirst(previous);
+    }
+
+    private static void reverse4(LinkList list) {
+        Link tempCurrent, current = list.getFirst();
+        Link tempPrevious, previous = null;
+        while (current != null) {
+            tempCurrent = current;
+            tempPrevious = previous;
+            previous = current;
+            current = current.next;
+            tempCurrent.next = tempPrevious;
+        }
+        list.setFirst(previous);
+    }
+
+    private static void partition() {
+        LinkList list = new LinkList();
+        System.out.println("List empty : " + list.isEmpty());
+
+        list.insertFirst(1);
+        list.insertFirst(2);
+        list.insertFirst(10);
+        list.insertFirst(5);
+        list.insertFirst(8);
+        list.insertFirst(5);
+        list.insertFirst(3);
+
+        list.displayList();
+
+        partitionAt(5, list);
+    }
+
+    private static void partitionAt(int partitionData, LinkList list) {
+        LinkList smallerElems = new LinkList();
+        LinkList largerElems = new LinkList();
+        Link current = list.getFirst();
+
+        while (current != null) {
+            if (current.data < partitionData) {
+                smallerElems.insertFirst(current.data);
+            } else {
+                largerElems.insertFirst(current.data);
+            }
+            current = current.next;
+        }
+        Link smallerEnd = smallerElems.getFirst();
+        while (smallerEnd.next != null) {
+            smallerEnd = smallerEnd.next;
+        }
+        smallerEnd.next = largerElems.getFirst();
+
+        System.out.println();
+        System.out.println("Partitioned list is:");
+        smallerElems.displayList();
+    }
+
+
 
     private static void deleteMiddleNode() {
         LinkList list = new LinkList();
@@ -156,4 +491,9 @@ public class LinkedListOperations {
             }
         }
     }
+}
+
+class PartialSum {
+    Link head;
+    int carry = 0;
 }

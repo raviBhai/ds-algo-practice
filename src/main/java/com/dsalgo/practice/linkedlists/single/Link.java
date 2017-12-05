@@ -11,4 +11,11 @@ public class Link {
     public void displayLink() {
         System.out.print("{ " + data + " }");
     }
+
+    public void displayChain() {
+        System.out.print("{ " + data + " }");
+        if (next != null) {
+            next.displayChain();
+        }
+    }
 }
