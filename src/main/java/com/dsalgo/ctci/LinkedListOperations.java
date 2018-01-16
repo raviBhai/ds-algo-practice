@@ -23,7 +23,146 @@ public class LinkedListOperations {
 
         //sumOfNumbers();
 
-        isPalindrome();
+        //isPalindrome();
+
+        //isLoopInListAndGetTheLoopStart();
+
+        isIntersection();
+    }
+
+    private static void isIntersection() {
+        Link a1 = new Link(1);
+        Link a2 = new Link(2);
+        Link a3 = new Link(3);
+        Link a4 = new Link(4);
+        Link a5 = new Link(5);
+
+        Link b1 = new Link(1);
+        Link b2 = new Link(2);
+        Link b3 = new Link(3);
+
+        Link ab1 = new Link(6);
+        Link ab2 = new Link(7);
+        Link ab3 = new Link(8);
+
+        a1.next = a2;
+        a2.next = a3;
+        a3.next = a4;
+        a4.next = a5;
+        a5.next = ab1;
+        ab1.next = ab2;
+        ab2.next = ab3;
+
+        b1.next = b2;
+        b2.next = b3;
+        b3.next = ab1;
+        ab1.next = ab2;
+        ab2.next = ab3;
+
+        Link head1 = a1;
+        Link head2 = b1;
+
+        findIntersection(head1, head2);
+    }
+
+    private static void findIntersection(Link head1, Link head2) {
+        int l1 = length(head1);
+        int l2 = length(head2);
+        TailAndSize tns1 = getTailAndSize(head1);
+        TailAndSize tns2 = getTailAndSize(head2);
+
+        if (tns1.tail != tns2.tail) {
+            System.out.println("The linked lists DO NOT intersect");
+            return;
+        }
+        int diff = Math.abs(l1 - l2);
+        Link longer = tns1.size > tns2.size ? head1 : head2;
+        Link shorter = tns1.size > tns2.size ? head2 : head1;
+
+        longer = moveByDiff(longer, diff);
+
+        while (longer != shorter) {
+            shorter = shorter.next;
+            longer = longer.next;
+        }
+        System.out.println("Intersecting element is : ");
+        longer.displayLink();
+    }
+
+    private static Link moveByDiff(Link longer, int diff) {
+        while (diff != 0) {
+            longer = longer.next;
+            diff--;
+        }
+        return longer;
+    }
+
+    private static TailAndSize getTailAndSize(Link head) {
+        int counter = 1;
+        while (head.next != null) {
+            head = head.next;
+            counter++;
+        }
+        return new TailAndSize(head, counter);
+    }
+
+    private static int length(Link head) {
+        int length = 0;
+        while (head != null) {
+            head = head.next;
+            length++;
+        }
+        return length;
+    }
+
+    private static void isLoopInListAndGetTheLoopStart() {
+        Link l1 = new Link(1);
+        Link l2 = new Link(2);
+        Link l3 = new Link(3);
+        Link l4 = new Link(4);
+        Link l5 = new Link(5);
+        Link l6 = new Link(6);
+        Link l7 = new Link(7);
+        Link l8 = new Link(8);
+
+        l1.next = l2;
+        l2.next = l3;
+        l3.next = l4;
+        l4.next = l5;
+        l5.next = l6;
+        l6.next = l7;
+        l7.next = l8;
+        l8.next = l3;
+
+        Link head = l1;
+
+        isLoopInListAndGetTheLoopStart(head);
+    }
+
+    private static void isLoopInListAndGetTheLoopStart(Link head) {
+        Link slow = head;
+        Link fast = head;
+        boolean isLoop = false;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                isLoop = true;
+                break;
+            }
+        }
+
+        if (isLoop) {
+            System.out.println("Loop is present in the link list");
+            Link start = head;
+            while (start != slow) {
+                start = start.next;
+                slow = slow.next;
+            }
+            slow.displayLink();
+        } else {
+            System.out.println("Loop is not present in the link list");
+        }
     }
 
     private static void isPalindrome() {
@@ -496,4 +635,14 @@ public class LinkedListOperations {
 class PartialSum {
     Link head;
     int carry = 0;
+}
+
+class TailAndSize {
+    Link tail;
+    int size;
+
+    public TailAndSize(Link tail, int size) {
+        this.tail = tail;
+        this.size = size;
+    }
 }
