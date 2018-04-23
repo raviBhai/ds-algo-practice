@@ -129,7 +129,7 @@ public class BinaryTree {
         }
 
         //delete node with one child
-        if (current.rightChild == null) {
+        else if (current.rightChild == null) {
             if (current == root) {
                 root = current.leftChild;
             } else if (isLeftChild) {
@@ -151,7 +151,7 @@ public class BinaryTree {
         else {
             Node successor = getSuccessor(current);
             if (current == root) {
-                successor = root;
+                root = successor;
             } else if (isLeftChild) {
                 parent.leftChild = successor;
             } else {

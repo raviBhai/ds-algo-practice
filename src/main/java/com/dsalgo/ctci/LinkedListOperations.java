@@ -21,13 +21,13 @@ public class LinkedListOperations {
 
         //reverse();
 
-        //sumOfNumbers();
+        sumOfNumbers();
 
         //isPalindrome();
 
         //isLoopInListAndGetTheLoopStart();
 
-        isIntersection();
+        //isIntersection();
     }
 
     private static void isIntersection() {
