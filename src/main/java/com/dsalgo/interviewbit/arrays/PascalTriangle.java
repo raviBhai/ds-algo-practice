@@ -9,7 +9,7 @@ public class PascalTriangle {
             System.out.println(Arrays.toString(res[i]));
         }*/
 
-        int[] krow = getRow(3);
+        int[] krow = getRow(5);
         System.out.println(Arrays.toString(krow));
     }
 

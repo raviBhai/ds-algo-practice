@@ -24,7 +24,7 @@ public class AllPathsInBTree {
         n1.leftChild = n2;
         n1.rightChild = n3;
 
-        n2.leftChild = n4;
+       /* n2.leftChild = n4;
         n2.rightChild = n5;
 
         n3.leftChild = n6;
@@ -33,7 +33,7 @@ public class AllPathsInBTree {
         n4.leftChild = n8;
         n4.rightChild = n9;
 
-        n5.leftChild = n10;
+        n5.leftChild = n10;*/
 
         paths(n1);
     }

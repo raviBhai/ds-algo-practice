@@ -4,6 +4,7 @@ public class SquareRoot {
     public static void main(String[] args) {
         SquareRoot sq = new SquareRoot();
         System.out.println(sq.sqrt(2147483647));
+        System.out.println(sq.sqrt(36));
     }
 
     public int sqrt(int a) {

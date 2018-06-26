@@ -2,16 +2,22 @@ package com.dsalgo.ctci;
 
 public class Fibonacci {
     public static void main(String[] args) {
+/*
         System.out.println(getFibonacciNumberUsingRecursionAt(1));
         System.out.println(getFibonacciNumberUsingRecursionAt(2));
         System.out.println(getFibonacciNumberUsingRecursionAt(3));
         System.out.println(getFibonacciNumberUsingRecursionAt(4));
-        System.out.println(getFibonacciNumberUsingRecursionAt(5));
+*/
+
+        System.out.println(getFibonacciNumberUsingRecursionAt(8));
+
+/*
         System.out.println(getFibonacciNumberUsingRecursionAt(6));
         System.out.println(getFibonacciNumberUsingRecursionAt(7));
         System.out.println(getFibonacciNumberUsingRecursionAt(8));
 
         System.out.println(getFibonacciNumberUsingMemoizationAt(7));
+*/
     }
 
     public static int getFibonacciNumberUsingRecursionAt(int n) {

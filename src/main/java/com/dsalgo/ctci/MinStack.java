@@ -1,6 +1,5 @@
 package com.dsalgo.ctci;
 
-import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class MinStack extends Stack<Integer> {
