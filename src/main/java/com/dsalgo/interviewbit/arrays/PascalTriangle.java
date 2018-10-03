@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class PascalTriangle {
     public static void main(String[] args) {
-        /*int[][] res = generate(0);
+        int[][] res = generate(5);
         for (int i = 0; i<res.length; i++) {
             System.out.println(Arrays.toString(res[i]));
-        }*/
+        }
 
         int[] krow = getRow(5);
         System.out.println(Arrays.toString(krow));

@@ -6,7 +6,7 @@ public class InsertionSort {
     static int[] data = {5,4,3,2,1};
 
     public static void main(String[] args) {
-        sort2(data);
+        sort(data);
         System.out.println(Arrays.toString(data));
     }
 
@@ -17,6 +17,8 @@ public class InsertionSort {
             for (inner = outer; inner > 0; inner--) {
                 if (data[inner-1] > temp) {
                     data[inner] = data[inner-1];
+                } else {
+                    break;
                 }
             }
             data[inner] = temp;

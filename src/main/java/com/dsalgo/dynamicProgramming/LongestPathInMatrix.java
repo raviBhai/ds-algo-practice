@@ -21,6 +21,12 @@ public class LongestPathInMatrix {
         }
     }
 
+
+    /*
+    All the numbers in the input matrix are unique.
+    Hence there is atmost one possible path.
+    Hence, if, else if, else if ladder is used.
+     */
     public int getPath(int i, int j) {
         int path = 1;
 

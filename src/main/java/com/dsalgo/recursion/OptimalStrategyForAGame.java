@@ -14,9 +14,13 @@ public class OptimalStrategyForAGame {
     }
 
     private int solve(int i, int j) {
+
+        //if only one coin is present, return that coin
         if (i == j) {
             return coins[i];
         }
+
+        //if two coins are present, return max of them
         if (i + 1 == j) {
             return Math.max(coins[i], coins[j]);
         }
