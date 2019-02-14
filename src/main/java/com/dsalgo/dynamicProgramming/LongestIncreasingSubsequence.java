@@ -25,6 +25,7 @@ public class LongestIncreasingSubsequence {
         for (int i = 0; i < temp.length; i++) {
             if (maxLis < temp[i]) {
                 maxLis = temp[i];
+                System.out.println(input[i]);       //Printing the increasing sub-sequence
             }
         }
 

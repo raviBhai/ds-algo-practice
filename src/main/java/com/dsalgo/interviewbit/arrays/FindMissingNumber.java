@@ -9,9 +9,9 @@ public class FindMissingNumber {
     public static void main(String[] args) {
         FindMissingNumber fm = new FindMissingNumber();
         ArrayList<Integer> A = new ArrayList<Integer>() {{
-            add(0);
-            add(0);
-            add(0);
+            add(3);
+            add(4);
+            add(5);
             //add(1);
         }};
 

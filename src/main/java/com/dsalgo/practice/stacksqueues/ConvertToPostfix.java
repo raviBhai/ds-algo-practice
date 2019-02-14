@@ -26,10 +26,12 @@ public class ConvertToPostfix {
                     break;
                 case '+':
                 case '-':
+                    output = output + ",";
                     handleOperator(ch, 1);
                     break;
                 case '*':
                 case '/':
+                    output = output + ",";
                     handleOperator(ch, 2);
                     break;
                 default:
@@ -39,6 +41,7 @@ public class ConvertToPostfix {
         }
 
         while (!stack.isEmpty()) {
+            output = output + ",";
             output = output + stack.pop();
         }
         return output;
@@ -62,6 +65,7 @@ public class ConvertToPostfix {
                     stack.push(opTop);
                     break;
                 } else {
+                    output = output + ",";
                     output = output + opTop;
                 }
             }
@@ -74,6 +78,7 @@ public class ConvertToPostfix {
         while (!stack.isEmpty()) {
             popped = stack.pop();
             if (popped != '(') {
+                output = output + ",";
                 output = output + popped;
             } else {
                 break;

@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class MaxNonNegativeSubArray {
     public static void main(String[] args) {
         //int[] A = {1, 2, 5, -7, 2, 3, -1, 4, 11, 0};
-        //int[] A = {1, 2, 5, -7, 2, 3, -1, 2, 1, 2, 3};
+        int[] A = {1, 2, 5, -7, 2, 3, -1, 2, 1, 2, 3};
         //int[] A = {1, 2, 5, -7, 2, 3, -1, 2, 1, 5};
         //int[] A = {1,2,3,4,5};
         //int[] A = {-1,-2,-3};
         //int[] A = {1, 2, 5, -7, 2, 5};
         //int[] A = {0, 0, -1, 0};
-        int[] A = {1967513926, 1540383426, -1303455736, -521595368};
+        //int[] A = {1967513926, 1540383426, -1303455736, -521595368};
         System.out.println(Arrays.toString(maxset(A)));
     }
 

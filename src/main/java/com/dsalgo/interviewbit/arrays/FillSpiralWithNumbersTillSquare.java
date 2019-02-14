@@ -25,7 +25,7 @@ public class FillSpiralWithNumbersTillSquare {
 
         while (!(rowStart > rowLength || colStart > colLength)) {
 
-            for (int i = rowStart; i <= colLength; i++) {
+            for (int i = colStart; i <= colLength; i++) {
                 res[rowStart][i] = ++count;
             }
 

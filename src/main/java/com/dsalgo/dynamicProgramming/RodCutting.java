@@ -38,11 +38,11 @@ public class RodCutting {
     }
 
     public static void main(String[] args) {
-        //int lengthOfRod = 5;
-        //int[] prices = {0, 2, 5, 7, 3};
+        int lengthOfRod = 5;
+        int[] prices = {0, 2, 5, 7, 3};
 
-        int lengthOfRod = 8;
-        int[] prices = {0, 3, 5, 8, 9, 10, 17, 17, 20};
+        //int lengthOfRod = 8;
+        //int[] prices = {0, 3, 5, 8, 9, 10, 17, 17, 20};
 
         RodCutting rodCutting = new RodCutting(lengthOfRod, prices);
         rodCutting.solve();

@@ -4,7 +4,7 @@ public class SubString {
     public static void main(String[] args) {
         SubString sb = new SubString();
         String parent = "MyHellHellp";
-        String sub = "";
+        String sub = "ell";
         System.out.println(sb.strStr2(parent, sub));
     }
 

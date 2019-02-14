@@ -7,6 +7,9 @@ public class StackUsingQueue<T> implements Stack<T> {
     private int maxSize;
     private int top;
 
+    public int push = 0;
+    public int pop = 0;
+
     public StackUsingQueue(int maxSize) {
         this.maxSize = maxSize;
         this.top = -1;
@@ -16,6 +19,7 @@ public class StackUsingQueue<T> implements Stack<T> {
     }
 
     public void push(T data) {
+        push++;
         refQueue.insert(data);
     }
 
@@ -37,9 +41,12 @@ public class StackUsingQueue<T> implements Stack<T> {
         T data;
         while (true) {
             if (fromQueue.size() == 1) {
+                pop++;
                 data = fromQueue.remove();
                 break;
             } else {
+                push++;
+                pop++;
                 toQueue.insert(fromQueue.remove());
             }
         }
@@ -77,8 +84,21 @@ public class StackUsingQueue<T> implements Stack<T> {
 
 class StackUsingQueueClient {
     public static void main(String[] args) {
-        Stack stack = new StackUsingQueue<Integer>(5);
-        System.out.println(stack.isEmpty());
+        StackUsingQueue stack = new StackUsingQueue<Integer>(5);
+
+        stack.push(5);
+        stack.push(6);
+        stack.pop();
+
+        stack.push(3);
+        stack.push(4);
+        stack.pop();
+
+        System.out.println(stack.push);
+        System.out.println(stack.pop);
+
+
+/*        System.out.println(stack.isEmpty());
         System.out.println(stack.isFull());
 
         stack.push(1);
@@ -106,6 +126,6 @@ class StackUsingQueueClient {
         System.out.println(stack.pop());
         System.out.println(stack.pop());
         System.out.println(stack.pop());
-        System.out.println(stack.pop());
+        System.out.println(stack.pop());*/
     }
 }

@@ -95,11 +95,17 @@ public class LongestPathInMatrix {
     }
 
     public static void main(String[] args) {
-        int  mat[][] = {
+        /*int  mat[][] = {
                 {1, 2, 9},
                 {5, 3, 8},
                 {4, 6, 7}
-            };
+            };*/
+
+        int  mat[][] = {
+                {5, 6, 7},
+                {4, 8, 9},
+                {3, 2, 1}
+        };
         LongestPathInMatrix longestPathInMatrix = new LongestPathInMatrix(mat);
         longestPathInMatrix.solve();
         for (int i = 0; i < mat.length; i++) {

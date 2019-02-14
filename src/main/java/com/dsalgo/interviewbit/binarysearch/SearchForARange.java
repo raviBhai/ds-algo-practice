@@ -21,7 +21,7 @@ public class SearchForARange {
             add(10);
         }};
 
-        System.out.println(sfr.searchRange(list, 8));
+        System.out.println(sfr.searchRange(list, 7));
     }
 
     public ArrayList<Integer> searchRange(final List<Integer> a, int b) {

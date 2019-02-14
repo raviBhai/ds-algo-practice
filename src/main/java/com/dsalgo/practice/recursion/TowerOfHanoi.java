@@ -1,6 +1,6 @@
 package com.dsalgo.practice.recursion;
 
-public class TowerOfHanoi {
+public class  TowerOfHanoi {
     static int nDisks = 3;
     public static void main(String[] args) {
         doTower(nDisks, "A", "B", "C");

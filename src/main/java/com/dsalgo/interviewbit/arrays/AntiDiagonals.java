@@ -22,10 +22,33 @@ public class AntiDiagonals {
 
         int[][] A = diagonal(C);
 
+        diagonal2(C);
+
         for (int i=0; i<A.length; i++) {
             System.out.println(Arrays.toString(A[i]));
         }
 
+    }
+
+    public static void diagonal2(int[][] A) {
+        int r = A.length;
+        int c = A[0].length;
+
+        for (int i = 0; i < c; i++) {
+            print(0, i, A);
+        }
+
+        for (int i = 1; i < r; i++) {
+            print(i, c-1, A);
+        }
+    }
+
+    public static void print(int i, int j, int[][] A) {
+        while(i < A.length && j >= 0) {
+            System.out.print(A[i][j] + " ");
+            i++; j--;
+        }
+        System.out.println();
     }
 
     public static int[][] diagonal(int[][] A) {

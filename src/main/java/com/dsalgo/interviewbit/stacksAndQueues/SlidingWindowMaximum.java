@@ -32,6 +32,12 @@ public class SlidingWindowMaximum {
         slide(a, a.length, 3);
         System.out.println();
         printMax_highTimeComplexity(a, a.length, 3);
+
+        System.out.println("Slide minimum:");
+
+        slideMin(a, a.length, 3);
+        System.out.println();
+
     }
 
 
@@ -155,5 +161,39 @@ public class SlidingWindowMaximum {
 
         // Print the maximum element of last window
         System.out.print(arr[Qi.peek()]);
+    }
+
+
+    static void slideMin(int[] arr, int n, int k) {
+        Deque<Integer> deque = new LinkedList<>();
+        int i;
+
+        for (i = 0; i < k; i++) {
+            while (!deque.isEmpty() && arr[deque.peekLast()] > arr[i]) {
+                deque.removeLast();
+            }
+            deque.addLast(i);
+        }
+
+        for (; i < n; i++) {
+            //print max from previous window
+            System.out.print(arr[deque.peek()] + " ");
+
+            //remove elements from previous window
+            while (!deque.isEmpty() && deque.peek() <= i - k) {
+                deque.removeFirst();
+            }
+
+            //remove smaller elements than the current element
+            while (!deque.isEmpty() && arr[deque.peekLast()] > arr[i]) {
+                deque.removeLast();
+            }
+
+            //add current element
+            deque.addLast(i);
+        }
+
+        //print max of the last window
+        System.out.print(arr[deque.peek()] + " ");
     }
 }

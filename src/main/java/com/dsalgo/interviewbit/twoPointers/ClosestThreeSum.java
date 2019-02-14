@@ -12,7 +12,7 @@ public class ClosestThreeSum {
         A.add(2);
         A.add(1);
         A.add(-4);
-        System.out.println(cts.threeSumClosest(A, 1));
+        System.out.println(cts.threeSumClosest(A, -2));
 
 
     }

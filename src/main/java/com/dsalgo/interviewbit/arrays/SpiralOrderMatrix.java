@@ -35,9 +35,12 @@ public class SpiralOrderMatrix {
                 {18,19,20},
                 {23,24,25}
         };
-        //spiral(A);
-        //spiral(B);
-        //spiral(C);
+        spiral(A);
+        System.out.println("**********");
+        spiral(B);
+        System.out.println("**********");
+        spiral(C);
+        System.out.println("**********");
         spiral(D);
     }
 
@@ -47,7 +50,7 @@ public class SpiralOrderMatrix {
 
         while (!(rowStart > rowLength || colStart > colLength)) {
 
-            for (int i = rowStart; i <= colLength; i++) {
+            for (int i = colStart; i <= colLength; i++) {
                 System.out.println(A[rowStart][i]);
             }
 

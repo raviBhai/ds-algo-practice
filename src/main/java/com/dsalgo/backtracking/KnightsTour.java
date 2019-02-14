@@ -2,8 +2,8 @@ package com.dsalgo.backtracking;
 
 public class KnightsTour {
     private int[][] solutionMatrix;
-    private int[] xMoves = {2,1,-1,-2,-2,-1,1,2};
-    private int[] yMoves = {1,2,2,1,-1,-2,-2,-1};
+    private int[] xMoves = {2, 1, -1, -2, -2, -1,  1,  2};
+    private int[] yMoves = {1, 2,  2,  1, -1, -2, -2, -1};
     private int boardSize;
 
     public KnightsTour(int boardSize) {
