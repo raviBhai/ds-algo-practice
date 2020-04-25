@@ -9,6 +9,7 @@ public class Fibonacci {
         System.out.println(fib_dp_memoization(8));
         System.out.println(fib_dp_tabulation(8));
         System.out.println(fib_dp_2(8));
+        System.out.println(fib_computation(8));
     }
 
     static int fib_recursion(int n) {
@@ -68,5 +69,16 @@ public class Fibonacci {
         map.put(n - 2, fib_dp_2_helper(n - 2, map));
         map.put(n, map.get(n - 1) + map.get(n - 2));
         return map.get(n);
+    }
+
+    static int fib_computation(int n) {
+        int a = 0, b = 1, c = 0;
+        while (n > 1) {
+            c = a + b;
+            a = b;
+            b = c;
+            n--;
+        }
+        return c;
     }
 }

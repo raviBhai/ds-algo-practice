@@ -95,6 +95,27 @@ public class CheckIfPathSumsToANumberBTree {
 
     }
 
+    public void isSum(Node n, int target, State s) {
+        if (n != null) {
+            target = target - n.data;
+            if (n.leftChild == null && n.rightChild == null) {
+                if (target == 0) {
+                    s.isSum = true;
+                    return;
+                }
+            } else {
+                isSum(n.leftChild, target, s);
+                if (s.isSum) {
+                    return;
+                }
+                isSum(n.rightChild, target, s);
+                if (s.isSum) {
+                    return;
+                }
+            }
+        }
+    }
+
 
 }
 

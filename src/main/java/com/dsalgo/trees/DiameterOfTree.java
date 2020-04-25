@@ -23,9 +23,34 @@ public class DiameterOfTree {
         return 1 + Math.max(height(node.leftChild), height(node.rightChild));
     }
 
+    public int diameter2(Node node, Height height) {
+        if (node == null) {
+            height.height = 0;
+            return 0;
+        }
+        Height leftHeight = new Height();
+        Height rightHeight = new Height();
+
+        int lDia = diameter2(node.leftChild, leftHeight);
+        int rDia = diameter2(node.rightChild, rightHeight);
+        height.height = 1 + Math.max(leftHeight.height, rightHeight.height);
+
+        int currDia = leftHeight.height + rightHeight.height + 1;
+        return Math.max(currDia, Math.max(lDia, rDia));
+    }
+
+
+
     public static void main(String[] args) {
         Node root = Helper.getBTree();
         DiameterOfTree diameterOfTree = new DiameterOfTree();
         System.out.println(diameterOfTree.diameter(root));
+
+        Height height = new Height();
+        System.out.println(diameterOfTree.diameter2(root, height));
     }
+}
+
+class Height {
+    int height;
 }

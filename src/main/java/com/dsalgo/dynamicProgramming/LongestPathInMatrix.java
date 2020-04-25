@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class LongestPathInMatrix {
     private int[][] mat;
     private int[][] dpPaths;
+    private int count;
 
     public LongestPathInMatrix(int[][] mat) {
         this.mat = mat;
@@ -33,7 +34,7 @@ public class LongestPathInMatrix {
         if (dpPaths[i][j] != 0) {
             return dpPaths[i][j];
         }
-
+        count++;
         if (isRightValid(i, j)) {
             path = 1 + getPath(i, j + 1);
         } else if (isLeftValid(i, j)) {
@@ -46,6 +47,21 @@ public class LongestPathInMatrix {
 
         dpPaths[i][j] = path;
 
+        return dpPaths[i][j];
+    }
+
+    public int getPath2(int i, int j) {
+        if (dpPaths[i][j] == 0) {
+            if (isRightValid(i, j)) {
+                dpPaths[i][j] = 1 + getPath(i, j + 1);
+            } else if (isLeftValid(i, j)) {
+                dpPaths[i][j] = 1 + getPath(i, j - 1);
+            } else if (isUpValid(i, j)) {
+                dpPaths[i][j] = 1 + getPath(i - 1 , j);
+            } else if (isDownValid(i, j)) {
+                dpPaths[i][j] = 1 + getPath(i + 1, j);
+            }
+        }
         return dpPaths[i][j];
     }
 
@@ -118,5 +134,6 @@ public class LongestPathInMatrix {
         for (int i = 0; i < longestPathInMatrix.dpPaths.length; i++) {
             System.out.println(Arrays.toString(longestPathInMatrix.dpPaths[i]));
         }
+        System.out.println(longestPathInMatrix.count);
     }
 }

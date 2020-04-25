@@ -11,10 +11,11 @@ public class NextPermutation {
         a.add(77);
         a.add(88);
         a.add(33);*/
+        a.add(1);
         a.add(2);
-        a.add(1);
-        a.add(1);
-        a.add(1);
+        a.add(5);
+        a.add(4);
+        a.add(3);
 
 
         System.out.println("Before Perm Opr");

@@ -43,30 +43,44 @@ public class Permutations {
     }
 }
 
-// time complexity is O(n^2 * n!)
+// time complexity is O(n!)
+//nested for loops DO NOT increase time complexity.
+// Final sol is build by adding small sub sols. Hence, overall time complexity is n!
 class RecursiveSol {
+    private static int count1 = 0;
+    private static int count2 = 0;
     public static Set<String> permutation (char[] arr, int start, int end) {
         Set<String> set = new HashSet<>();
         if (end < start) {
             set.add("");
-        } else if (end == start) {
+        }
+
+        //This condition is not required
+        /*else if (end == start) {
             set.add("" + arr[end]);
-        } else {
+        }*/
+
+        else {
             Set<String> previousSet = permutation(arr, start, end - 1);
             char ch = arr[end];
             for (String prevStr : previousSet) {
+                count2++;
                 for (int i = 0; i <= prevStr.length(); i++) {
                     String s = prevStr.substring(0, i) + ch + prevStr.substring(i);
                     set.add(s);
+                    count1++;
                 }
             }
+            System.out.println(count2);
+            count2 = 0;
         }
         return set;
     }
 
     public static void main(String[] args) {
-        String str = "abc";
+        String str = "abcde";
         Set<String> set = permutation(str.toCharArray(), 0 , str.length()-1);
         System.out.println(set);
+        System.out.println(count1);
     }
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Atoi {
     public static void main(String[] args) {
         Atoi atoi = new Atoi();
-        System.out.println(atoi.atoi("- 123"));
+        System.out.println(atoi.atoi("9223372036854775808"));
     }
 
     public int atoi(final String A) {

@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class LongestPathInMatrix {
     private int[][] mat;
     private int[][] pathsMat;
+    private int count;
 
     public LongestPathInMatrix(int[][] mat) {
         this.mat = mat;
@@ -29,6 +30,7 @@ public class LongestPathInMatrix {
     public int getPath(int i, int j) {
         int path = 1;
 
+        count++;
         if (isRightValid(i, j)) {
             path = 1 + getPath(i, j + 1);
         } else if (isLeftValid(i, j)) {
@@ -117,5 +119,7 @@ public class LongestPathInMatrix {
         for (int i = 0; i < longestPathInMatrix.pathsMat.length; i++) {
             System.out.println(Arrays.toString(longestPathInMatrix.pathsMat[i]));
         }
+        System.out.println(longestPathInMatrix.count);
+
     }
 }

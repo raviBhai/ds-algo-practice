@@ -43,6 +43,25 @@ public class WordBreak {
         return dpTable[0][word.length() - 1];
     }
 
+    public void solve() {
+        int n = word.length();
+        for (int l = 1; l <= n; l++) {
+            for (int i = 0; i <= n - l; i++) {
+                String s = word.substring(i, i + l);
+                if (dictionary.contains(s)) {
+                    dpTable[i][i + l - 1] = true;
+                } else {
+                    for (int split = i + 1; split < (i + l); split++) {
+                        if (dpTable[i][split - 1] && dpTable[split][i + l - 1]) {
+                            dpTable[i][i + l - 1] = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Set<String> dictionary = new HashSet<String>() {{
             add("i");

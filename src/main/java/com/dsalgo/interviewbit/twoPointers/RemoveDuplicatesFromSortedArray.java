@@ -5,13 +5,18 @@ import java.util.ArrayList;
 public class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedArray rd = new RemoveDuplicatesFromSortedArray();
-        ArrayList<Integer> a = new ArrayList<Integer>() {{
+        /*ArrayList<Integer> a = new ArrayList<Integer>() {{
             add(500);
             add(500);
             add(500);
         }};
         rd.removeDuplicates(a);
-        System.out.println(a);
+        System.out.println(a);*/
+
+        //int[] nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int[] nums = {1, 1, 2};
+        //int[] nums = {1, 1};
+        System.out.println(rd.removeDuplicates(nums));
     }
 
     public int removeDuplicates(ArrayList<Integer> a) {
@@ -54,4 +59,36 @@ public class RemoveDuplicatesFromSortedArray {
      return a.size();
      *
      */
+
+    public int removeDuplicates(int[] nums) {
+        if (nums == null) {
+            return 0;
+        }
+        if (nums.length < 2) {
+            return nums.length;
+        }
+
+        int curr = nums.length - 2, prev = nums.length - 1;
+        int count = 0;
+        while (curr >= 0) {
+            if (nums[curr] != nums[prev]) {
+                curr--;
+                prev--;
+            } else {
+                moveToEnd(nums, curr);
+                count++;
+                curr--;
+                prev--;
+            }
+        }
+        return nums.length - count;
+    }
+
+    void moveToEnd(int[]  nums, int i) {
+        int tmp = nums[i], j = i + 1;
+        for (; j < nums.length; j++) {
+            nums[j - 1] = nums[j];
+        }
+        nums[j - 1] = tmp;
+    }
 }

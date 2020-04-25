@@ -1,8 +1,12 @@
 package com.dsalgo.dynamicProgramming;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
-        int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60, 80 };
+        int arr[] = {100, 10, 22, 9, 33, 21, 50, 41, 60, 80 };
         int n = arr.length;
         System.out.println("Length of lis is " + lis(arr));
     }
@@ -22,13 +26,16 @@ public class LongestIncreasingSubsequence {
         }
 
         int maxLis = Integer.MIN_VALUE;
+        Map<Integer, Integer> map = new LinkedHashMap<>();
         for (int i = 0; i < temp.length; i++) {
-            if (maxLis < temp[i]) {
+            if (maxLis <= temp[i]) {
                 maxLis = temp[i];
-                System.out.println(input[i]);       //Printing the increasing sub-sequence
+                map.put(maxLis, input[i]);
+                //System.out.println(input[i]);       //Printing the increasing sub-sequence
             }
         }
 
+        System.out.println(map);
         return maxLis;
     }
 }

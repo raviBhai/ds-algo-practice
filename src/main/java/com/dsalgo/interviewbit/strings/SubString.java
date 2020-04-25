@@ -5,7 +5,8 @@ public class SubString {
         SubString sb = new SubString();
         String parent = "MyHellHellp";
         String sub = "ell";
-        System.out.println(sb.strStr2(parent, sub));
+        //System.out.println(sb.strStr2(parent, sub));
+        System.out.println(sb.strstr(parent, sub));
     }
 
     public int strStr2(final String parent, final String sub) {
@@ -64,5 +65,36 @@ public class SubString {
             index = pI - sI;
         }
         return index;
+    }
+
+    public int strstr(String haystack, String needle) {
+        if (haystack == null || needle == null) {
+            return -1;
+        }
+        if (haystack.isEmpty() && needle.isEmpty()) {
+            return 0;
+        }
+        if (haystack.isEmpty()) {
+            return -1;
+        }
+        if (needle.isEmpty()) {
+            return 0;
+        }
+        int len1 = haystack.length();
+        int len2 = needle.length();
+        for (int i = 0; i <= len1 - len2; i++) {
+            if (haystack.charAt(i) != needle.charAt(0)) {
+                continue;
+            } else {
+                int j = 0;
+                while (j < needle.length() && haystack.charAt(i + j) == needle.charAt(j)) {
+                    j++;
+                    if (j == needle.length()) {
+                        return i;
+                    }
+                }
+            }
+        }
+        return -1;
     }
 }

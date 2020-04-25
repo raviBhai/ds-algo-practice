@@ -3,6 +3,7 @@ package com.dsalgo.dynamicProgramming;
 public class OptimalStrategyForAGame {
     private int[] coins;
     private int[][] dpTable;
+    private int count;
 
     public OptimalStrategyForAGame(int[] coins) {
         this.coins = coins;
@@ -29,6 +30,7 @@ public class OptimalStrategyForAGame {
             } else if (i + 1 == j) {
                 dpTable[i][j] = Math.max(coins[i], coins[j]);
             } else {
+                count++;
                 dpTable[i][j] = Math.max(
                         coins[i] + Math.min(solve_dp(i+2, j), solve_dp(i+1, j-1)),
                         coins[j] + Math.min(solve_dp(i+1, j-1), solve_dp(i, j-2))
@@ -39,8 +41,9 @@ public class OptimalStrategyForAGame {
     }
 
     public static void main(String[] args) {
-        int[] coins = {8, 15, 3, 7};
+        int[] coins = {8, 15, 3, 7, 4, 5, 2, 2, 2, 2};
         OptimalStrategyForAGame game = new OptimalStrategyForAGame(coins);
         game.solve();
+        System.out.println(game.count);
     }
 }

@@ -33,13 +33,13 @@ public class FillSpiralWithNumbersTillSquare {
                 res[i][colLength] = ++count;
             }
 
-            if (rowStart != rowLength) {
+            if (rowStart < rowLength) {
                 for (int i = colLength-1; i >= colStart; i--) {
                     res[rowLength][i] = ++count;
                 }
             }
 
-            if (colStart != colLength) {
+            if (colStart < colLength) {
                 for (int i = rowLength-1; i > rowStart; i--) {
                     res[i][colStart] = ++count;
                 }

@@ -50,14 +50,29 @@ public class MinimumCoinsToGetATotal {
         System.out.println("Minimum number of coins - " + dpTable[coins.length][total]);
     }
 
+    public void showResult() {
+        for (int n = coins.length, w = total; n > 0;) {
+            if (dpTable[n][w] != MAX && dpTable[n - 1][w] != dpTable[n][w]) {
+                System.out.println("Take coin " + coins[n - 1]);
+                w = w - coins[n-1];
+            } else {
+                n--;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         //int[] coins = {9, 6, 5, 1};
         //int total = 11;
 
-        int[] coins = {25, 10, 5};
-        int total = 30;
+        //int[] coins = {25, 10, 5};
+        //int total = 30;
+
+        int[] coins = {1, 2, 3};
+        int total = 5;
 
         MinimumCoinsToGetATotal minimumCoinsToGetATotal = new MinimumCoinsToGetATotal(total, coins);
         minimumCoinsToGetATotal.solve();
+        minimumCoinsToGetATotal.showResult();
     }
 }

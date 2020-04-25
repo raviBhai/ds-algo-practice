@@ -56,3 +56,8 @@ public class MergeSort {
         }
     }
 }
+
+//Minimum number of platforms required for a train uses the merge() function above.
+// It needs only the first while loop. 2nd and 3rd while loops are not required, because
+// we only have to traverse till the end of first array, which holds arrival time of all trains.
+// Once we are done traversing the arrival times, we have figured out the maximum platforms required.

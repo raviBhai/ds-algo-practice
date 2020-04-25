@@ -15,14 +15,17 @@ public class TotalWaysToFormANumber {
      */
 
 
+
     /*
 
     This problem is same as climbing n stairs in 1,3,5 steps
+
+    DP solution - https://github.com/kdn251/interviews/blob/master/company/facebook/CombinationSumIV.java
      */
 
 
     public static void main(String[] args) {
-        System.out.println(state(7));
+        System.out.println(state(4));
     }
 
     static int state(int n) {
@@ -41,7 +44,7 @@ public class TotalWaysToFormANumber {
             if (n == 0) {
                 dp[n] = 1;
             } else {
-                dp[n] = state_helper(n - 1) + state_helper(n - 3) + state_helper(n - 5);
+                dp[n] = state_helper(n - 1) + state_helper(n - 2) + state_helper(n - 3);
             }
         }
 

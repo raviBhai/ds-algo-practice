@@ -70,6 +70,73 @@ public class Sudoku {
         return false;
     }
 
+    //We will solve the sudoku columnwise. Traverse first column, then second, then third and so on..
+    private boolean solveSudoku2(int rowIndex, int columnIndex) {
+        if (rowIndex == BOARD_SIZE && columnIndex+1 == BOARD_SIZE) {
+            return true;
+        }
+
+        //if current column end is reached, then we need to go to the next column
+        if (rowIndex == BOARD_SIZE) {
+            rowIndex = 0;
+            columnIndex+=1;
+        }
+
+        //handle already filled values in given sudoku
+        if (sudokuTable[rowIndex][columnIndex] != 0) {
+            return solveSudoku(rowIndex + 1, columnIndex);
+        }
+
+        //else
+        for (int number = MIN_NUM; number <= MAX_NUM; number++) {
+            if (valid(rowIndex, columnIndex, number)) {
+                sudokuTable[rowIndex][columnIndex] = number;
+
+                if (solveSudoku(rowIndex+1, columnIndex)) {
+                    return true;
+                }
+
+                //Backtrack !!!
+                sudokuTable[rowIndex][columnIndex] = 0;
+            }
+        }
+
+        return false;
+    }
+
+    //We will solve the sudoku columnwise. Traverse first column, then second, then third and so on..
+    private boolean solveSudoku3(int rowIndex, int columnIndex) {
+        if (rowIndex == BOARD_SIZE && columnIndex+1 == BOARD_SIZE) {
+            return true;
+        }
+
+        //if current column end is reached, then we need to go to the next column
+        if (rowIndex == BOARD_SIZE) {
+            return solveSudoku(0, columnIndex+1);
+        }
+
+        //handle already filled values in given sudoku
+        if (sudokuTable[rowIndex][columnIndex] != 0) {
+            return solveSudoku(rowIndex + 1, columnIndex);
+        }
+
+        //else
+        for (int number = MIN_NUM; number <= MAX_NUM; number++) {
+            if (valid(rowIndex, columnIndex, number)) {
+                sudokuTable[rowIndex][columnIndex] = number;
+
+                if (solveSudoku(rowIndex+1, columnIndex)) {
+                    return true;
+                }
+
+                //Backtrack !!!
+                sudokuTable[rowIndex][columnIndex] = 0;
+            }
+        }
+
+        return false;
+    }
+
     private boolean valid(int rowIndex, int columnIndex, int number) {
         //check if number present in row
         for (int i=0; i < BOARD_SIZE; i++) {
