@@ -74,6 +74,25 @@ public class NextPermutation {
         return maxIndex;
     }
 
+    //use this instead of above function
+    public int getMaxAfterIndex_2(int index, ArrayList<Integer> a) {
+        int current = a.get(index);
+        int max = Integer.MIN_VALUE;
+        for (int i = index + 1; i < a.size(); i++) {
+            if (max == Integer.MIN_VALUE && a.get(i) > current) {
+                max = a.get(i);
+            } else {
+                if (a.get(i) < max && a.get(i) > current) {
+                    max = a.get(i);
+                }
+            }
+        }
+        if (max == Integer.MIN_VALUE) {
+            max = current;
+        }
+        return max;
+    }
+
     public void sortInDescendeingOrderFromIndex(int index, ArrayList<Integer> a) {
         int out, in, min;
         for (out = index; out < a.size(); out++) {

@@ -19,6 +19,7 @@ public class MazeProblem {
         }
     }
 
+    //Also check AllPathsInBlockedMatrix.java in this repo. That solution gives all the paths in this matrix
     private boolean solveMaze(int x, int y) {
         if (isFinished(x, y)) {
             return true;

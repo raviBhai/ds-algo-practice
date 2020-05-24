@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CheckIfPathSumsToANumberBTree {
 
-
+    private static int count = 0;
     public static void main(String[] args) {
         Node n1 = new Node(1);
         Node n2 = new Node(2);
@@ -39,8 +39,10 @@ public class CheckIfPathSumsToANumberBTree {
 
         List<Integer> path = new ArrayList<>();
         State state = new State(false);
-        paths(n1, 16, state, path);
+        //paths(n1, 16, state, path);
+        isSum(n1, 16, state);
         System.out.println(state.isSum);
+        System.out.println(count);
 
 
     }
@@ -95,8 +97,9 @@ public class CheckIfPathSumsToANumberBTree {
 
     }
 
-    public void isSum(Node n, int target, State s) {
+    public static void isSum(Node n, int target, State s) {
         if (n != null) {
+            count++;
             target = target - n.data;
             if (n.leftChild == null && n.rightChild == null) {
                 if (target == 0) {
