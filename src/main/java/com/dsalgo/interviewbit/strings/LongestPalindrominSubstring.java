@@ -59,3 +59,45 @@ public class LongestPalindrominSubstring {
         return str;
     }
 }
+
+class AnotherSolution {
+
+    public static void main(String[] args) {
+        System.out.println(longestPalindrome("babad"));
+    }
+
+    public static String longestPalindrome(String s) {
+
+        int len = 0;
+        String res = "";
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = s.length()-1; j >= 0; j--) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (isPalindrome(s, i, j)) {
+                        if (len < (j-i+1)) {
+                            len = j-i+1;
+                            res = s.substring(i, j+1);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
+
+    private static boolean isPalindrome(String s, int i, int j) {
+        while (true) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i++;
+                j--;
+            } else {
+                return false;
+            }
+            if (i > j) {
+                return true;
+            }
+        }
+    }
+}

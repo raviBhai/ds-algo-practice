@@ -33,6 +33,16 @@ public class CoinChange {
         }
 
         System.out.println("Solution: " + dpTable[coins.length][total]);
+        printdpTable(dpTable);
+    }
+
+    private void printdpTable(int[][] dpTable) {
+        for (int i = 0; i < dpTable.length; i++) {
+            for (int j = 0; j < dpTable[0].length; j++) {
+                System.out.print(dpTable[i][j] + " - ");
+            }
+            System.out.println();
+        }
     }
 
     public static void main(String[] args) {
@@ -41,10 +51,15 @@ public class CoinChange {
         //int[] coins = {1,2,3};
         //int total = 4;
 
-        int[] coins = {1,3,5};
-        int total = 7;
+        //int[] coins = {1,3,5};
+        //int total = 7;
+
+        int[] coins = {2, 3, 5, 6, 8, 10};
+        int total = 10;
+
 
         System.out.println(coinChange.naiveCoinChange(total, coins, 0));
         coinChange.dpCoinChange(total, coins);
+
     }
 }

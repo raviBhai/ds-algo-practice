@@ -46,6 +46,8 @@ public class Permutations {
 // time complexity is O(n!)
 //nested for loops DO NOT increase time complexity.
 // Final sol is build by adding small sub sols. Hence, overall time complexity is n!
+// (24*5 = 120) + (6*4 = 24) + (2*3 = 6) + (2*1 = 2) + (1*1 = 1) = 153
+// (n-1! * n) + (n-2! * n-1) + ... = ~ n!
 class RecursiveSol {
     private static int count1 = 0;
     private static int count2 = 0;

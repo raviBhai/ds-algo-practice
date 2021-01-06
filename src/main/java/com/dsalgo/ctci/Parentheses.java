@@ -9,7 +9,7 @@ public class Parentheses {
 
 
     public static void main(String[] args) {
-        System.out.println(getParentheses(4));
+        System.out.println(getParentheses(5));
         System.out.println(count1);
     }
 

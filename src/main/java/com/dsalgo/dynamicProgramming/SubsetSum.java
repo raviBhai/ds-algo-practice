@@ -40,6 +40,19 @@ public class SubsetSum {
         System.out.println("Solution: " + dpTable[S.length][sum]);
     }
 
+    private void printdpTable() {
+        for (int i = 0; i < dpTable.length; i++) {
+            for (int j = 0; j < dpTable[0].length; j++) {
+                if (dpTable[i][j]) {
+                    System.out.print("T" + " - ");
+                } else {
+                    System.out.print("F" + " - ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public void showResult() {
         int rowIndex  = S.length;
         int colIndex = sum;
@@ -56,11 +69,16 @@ public class SubsetSum {
     }
 
     public static void main(String[] args) {
-        int[] S = {5, 2, 3, 1};
-        int sum = 9;
+        //int[] S = {5, 2, 3, 1};
+        //int sum = 9;
+
+        int[] S = {2, 3, 5, 6, 8, 10};
+        int sum = 10;
+
 
         SubsetSum subsetSum = new SubsetSum(sum, S);
         subsetSum.solve();
         subsetSum.showResult();
+        subsetSum.printdpTable();
     }
 }
