@@ -60,6 +60,8 @@ public class RemoveDuplicatesFromSortedArray {
      *
      */
 
+    //https://github.com/kdn251/interviews/blob/master/company/facebook/RemoveDuplicatesFromSortedArray.java
+
     public int removeDuplicates(int[] nums) {
         if (nums == null) {
             return 0;

@@ -9,6 +9,9 @@ public class AllSubsets {
     private static int count1 = 0;
 
     // time complexity is O(2^n)
+    // Every call of Set previous = getSubsets() for current n will return a previous list of size 2^(n-1)
+    // And then the previous list is iterated over.
+    // Hence, time complexity is 2^(n-1) * (n-1) + 2^(n-2) * (n-2) + ... = ~ 2^n
     public Set<String> getSubsets(char[] arr, int start, int end) {
         Set<String> result = new HashSet<>();
         if (end < start) {

@@ -51,6 +51,26 @@ public class LongestCommonSubsequence {
         }
     }
 
+    // Use this instead of above method
+    public void printLCS2() {
+        int row = s1.length();
+        int col = s2.length();
+            while (row > 0 && col > 0) {
+                if (s1.charAt(row - 1) == s2.charAt(col - 1)) {
+                    System.out.println(s1.charAt(row - 1));
+                    row--;
+                    col--;
+                } else {
+                    if (dpTable[row][col] == dpTable[row][col - 1]) {
+                        col--;
+                    } else {
+                        row--;
+                    }
+                }
+            }
+    }
+
+
     public static void main(String[] args) {
         LongestCommonSubsequence lcs = new LongestCommonSubsequence();
         String s1 = "AGGTAB";
@@ -67,6 +87,8 @@ public class LongestCommonSubsequence {
         lcs = new LongestCommonSubsequence(s1, s2);
         lcs.solve();
         lcs.printLCS();
+        System.out.println("***********");
+        lcs.printLCS2();
     }
 
     public int dp_lcs(char[] s1, char[] s2, int m, int n) {

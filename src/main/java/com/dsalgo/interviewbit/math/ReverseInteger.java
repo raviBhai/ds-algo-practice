@@ -1,5 +1,7 @@
 package com.dsalgo.interviewbit.math;
 
+import java.util.*;
+
 public class ReverseInteger {
     public static void main(String[] args) {
         ReverseInteger ri = new ReverseInteger();
@@ -19,5 +21,17 @@ public class ReverseInteger {
             temp = temp / 10;
         }
         return reverse.intValue();
+    }
+
+    private void test() {
+        Map<String, Integer> map = new HashMap();
+        TreeMap tmap = new TreeMap();
+
+        Iterator<Map.Entry<String, Integer>> iterator1 = map.entrySet().iterator();
+
+        Deque<Integer> deque = new LinkedList<>();
+        Iterator<Integer> iterator = deque.iterator();
+
+
     }
 }

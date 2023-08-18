@@ -3,7 +3,7 @@ package com.dsalgo.interviewbit.strings;
 public class LengthOfLastWord {
     public static void main(String[] args) {
         LengthOfLastWord len = new LengthOfLastWord();
-        System.out.println(len.lengthOfLastWord("sadf !@#%   "));
+        System.out.println(len.lengthOfLastWord("sadfsdas !@#%   "));
     }
 
     public int lengthOfLastWord(final String A) {
