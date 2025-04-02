@@ -13,7 +13,7 @@ public class MagicIndex {
 
         while (true) {
             current = (lower + upper) / 2;
-            if (a[current] == current) {
+            if (a[current] == current) {    // magic index
                 return current;
             } else if (lower > upper) {
                 return -1;

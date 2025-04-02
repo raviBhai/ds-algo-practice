@@ -65,7 +65,7 @@ public class ReverseSectionOfALinkedList {
             justBeforeStart.next = prev;
         }
 
-        if (start == first) {
+        if (start == first) { // or justBeforeStart == null
             first = prev;
         }
 

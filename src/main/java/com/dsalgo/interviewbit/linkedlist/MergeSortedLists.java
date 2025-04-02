@@ -24,6 +24,7 @@ public class MergeSortedLists {
         mergedListNode.display();
     }
 
+    // https://leetcode.com/problems/merge-two-sorted-lists/
     public ListNode mergeTwoLists(ListNode A, ListNode B) {
         ListNode currentA = A;
         ListNode currentB = B;

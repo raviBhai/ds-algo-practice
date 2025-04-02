@@ -32,6 +32,7 @@ class RandomizedSet {
                 int lastVal = list.get(list.size() - 1);
                 list.set(index, lastVal);
                 map.put(lastVal, index);
+                list.remove(list.size() - 1);
             }
             return true;
         }

@@ -12,6 +12,10 @@ public class MinimumCoinsToGetATotal {
         this.dpTable = new int[coins.length + 1][total + 1];
     }
 
+    // https://leetcode.com/problems/combination-sum/solutions/16502/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/
+    // Combination Sum : https://leetcode.com/problems/combination-sum/
+    // Result is List<List<Integer>> resultList.
+    // From this resultList, get the list with minimum size for this question.
     public void solve() {
         for (int i = 0; i <= coins.length; i++) {
             dpTable[i][0] = 0;

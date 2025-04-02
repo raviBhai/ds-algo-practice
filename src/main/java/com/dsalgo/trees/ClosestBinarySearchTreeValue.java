@@ -17,7 +17,7 @@ public class ClosestBinarySearchTreeValue {
 
             diff = Math.abs(current.data - target);
             if (diff < min) {
-                diff = min;
+                min = diff;
                 result = current.data;
             }
 

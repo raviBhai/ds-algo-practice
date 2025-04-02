@@ -81,6 +81,10 @@ public class EvaluateExpression {
         int prec2 = 0;
         while (!charStack.isEmpty()) {
             ch2 = charStack.pop();
+            if (ch2 == '(') {
+                charStack.push(ch2);
+                break;
+            }
             if (ch2 == '*' || ch2 == '/') {
                 prec2 = 2;
             } else if (ch2 == '+' || ch2 == '-') {

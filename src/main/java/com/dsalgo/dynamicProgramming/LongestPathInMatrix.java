@@ -52,6 +52,7 @@ public class LongestPathInMatrix {
 
     public int getPath2(int i, int j) {
         if (dpPaths[i][j] == 0) {
+            dpPaths[i][j] = 1;
             if (isRightValid(i, j)) {
                 dpPaths[i][j] = 1 + getPath(i, j + 1);
             } else if (isLeftValid(i, j)) {

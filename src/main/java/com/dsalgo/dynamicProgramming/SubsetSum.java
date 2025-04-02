@@ -11,6 +11,8 @@ public class SubsetSum {
         this.dpTable = new boolean[S.length + 1][sum + 1];
     }
 
+    // https://leetcode.com/problems/combination-sum/solutions/16502/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/
+    // check Combination Sum II (can't reuse same element) : https://leetcode.com/problems/combination-sum-ii/
     public void solve() {
 
         //first row is false expect from element at 0,0

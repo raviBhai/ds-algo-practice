@@ -5,16 +5,30 @@ import java.util.*;
 public class MeetingRooms {
 
     public int mostBooked(int n, int[][] meetings) {
-        List<Meeting> meetingList = new ArrayList<>();
-        for (int i = 0; i < meetings.length; i++) {
-            Meeting m = new Meeting(meetings[i][0], meetings[i][1]);
-            meetingList.add(m);
-        }
 
         List<Room> rooms = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             Room r = new Room(i);
             rooms.add(r);
+        }
+
+        PriorityQueue<Room> availableRooms = new PriorityQueue<>(
+                new Comparator<Room>() {
+                    public int compare(Room r1, Room r2) {
+                        return r1.index - r2.index;
+                    }
+                }
+        );
+
+        for (Room r : rooms) {
+            availableRooms.offer(r);
+        }
+
+
+        List<Meeting> meetingList = new ArrayList<>();
+        for (int i = 0; i < meetings.length; i++) {
+            Meeting m = new Meeting(meetings[i][0], meetings[i][1]);
+            meetingList.add(m);
         }
 
         Collections.sort(meetingList, new Comparator<Meeting>() {
@@ -35,17 +49,7 @@ public class MeetingRooms {
                 }
         );
 
-        PriorityQueue<Room> availableRooms = new PriorityQueue<>(
-                new Comparator<Room>() {
-                    public int compare(Room r1, Room r2) {
-                        return r1.index - r2.index;
-                    }
-                }
-        );
 
-        for (Room r : rooms) {
-            availableRooms.offer(r);
-        }
 
         for (Meeting m : meetingList) {
 
@@ -66,15 +70,26 @@ public class MeetingRooms {
             busyRooms.offer(ar);
         }
 
-        PriorityQueue<Room> maxCountRooms = new PriorityQueue<>(
+
+        Collections.sort(rooms, new Comparator<Room>() {
+            @Override
+            public int compare(Room o1, Room o2) {
+                if (o1.count == o2.count) {
+                    return o1.index - o2.index;
+                }
+                return o1.count - o2.count;
+            }
+        });
+
+        return rooms.get(0).index;
+
+       /* PriorityQueue<Room> maxCountRooms = new PriorityQueue<>(
                 new Comparator<Room>() {
                     public int compare(Room r1, Room r2) {
                         return r1.index - r2.index;
                     }
                 }
         );
-
-
 
         int maxCount = Integer.MIN_VALUE;
         List<Room> maxCountRoomsList = null;
@@ -92,21 +107,20 @@ public class MeetingRooms {
             maxCountRooms.offer(r);
         }
 
-        return maxCountRooms.poll().index;
+        return maxCountRooms.poll().index;*/
 
     }
 
     public static void main(String[] args) {
         MeetingRooms meetingRooms = new MeetingRooms();
         int[][] meetings = {
-                {1,27},
-                {29,49},
-                {47,49},
-                {41,43},
-                {15,36},
-                {11,15}
+                {0,10},
+                {1,5},
+                {2,7},
+                {3,4}
+
         };
-        System.out.println(meetingRooms.mostBooked(3, meetings));
+        System.out.println(meetingRooms.mostBooked(2, meetings));
     }
 
 

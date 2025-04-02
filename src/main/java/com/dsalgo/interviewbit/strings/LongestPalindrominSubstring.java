@@ -100,4 +100,17 @@ class AnotherSolution {
             }
         }
     }
+
+    //use this
+    private static boolean isPalindrome2(String s, int i, int j) {
+        while (i <= j) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i++;
+                j--;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
 }

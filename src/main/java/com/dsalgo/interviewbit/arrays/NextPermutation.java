@@ -78,19 +78,42 @@ public class NextPermutation {
     public int getMaxAfterIndex_2(int index, ArrayList<Integer> a) {
         int current = a.get(index);
         int max = Integer.MIN_VALUE;
+        int maxIndex = index;
         for (int i = index + 1; i < a.size(); i++) {
             if (max == Integer.MIN_VALUE && a.get(i) > current) {
                 max = a.get(i);
+                maxIndex = i;
             } else {
                 if (a.get(i) < max && a.get(i) > current) {
                     max = a.get(i);
+                    maxIndex = i;
                 }
             }
         }
         if (max == Integer.MIN_VALUE) {
             max = current;
+            maxIndex = index;
         }
-        return max;
+        return maxIndex;
+    }
+
+    public int getMaxAfterIndex_3(int index, ArrayList<Integer> a) {
+        int maxIndex = -1;
+        for (int i = index + 1; i < a.size(); i++) {
+            if (maxIndex == -1 && a.get(i) > a.get(index)) {
+                maxIndex = i;
+            } else {
+                if (maxIndex != -1 &&
+                        a.get(i) < a.get(maxIndex) &&
+                        a.get(i) > a.get(index)) {
+                    maxIndex = i;
+                }
+            }
+        }
+        if (maxIndex == -1) {
+            maxIndex = index;
+        }
+        return maxIndex;
     }
 
     public void sortInDescendeingOrderFromIndex(int index, ArrayList<Integer> a) {

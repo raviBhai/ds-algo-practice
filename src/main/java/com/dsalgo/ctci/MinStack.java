@@ -6,8 +6,12 @@ public class MinStack extends Stack<Integer> {
     private Stack<Integer> minData = new Stack<Integer>();
 
     public void push(int input) {
-        if (input <= min()) {
+        if (minData.isEmpty()) {
             minData.push(input);
+        } else {
+            if (input <= min()) {
+                minData.push(input);
+            }
         }
         super.push(input);
     }
@@ -22,7 +26,7 @@ public class MinStack extends Stack<Integer> {
 
     public int min() {
         if (minData.isEmpty()) {
-            return Integer.MAX_VALUE;
+            throw new RuntimeException("Stack is empty");
         }
         return minData.peek();
     }

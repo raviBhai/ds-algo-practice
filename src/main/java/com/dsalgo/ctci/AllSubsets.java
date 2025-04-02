@@ -11,7 +11,8 @@ public class AllSubsets {
     // time complexity is O(2^n)
     // Every call of Set previous = getSubsets() for current n will return a previous list of size 2^(n-1)
     // And then the previous list is iterated over.
-    // Hence, time complexity is 2^(n-1) * (n-1) + 2^(n-2) * (n-2) + ... = ~ 2^n
+    // time complexity will be calculated only when during iteration, not during recursive call
+    // Hence, time complexity is 2^(n-1) + 2^(n-2) + ... = ~ 2^n
     public Set<String> getSubsets(char[] arr, int start, int end) {
         Set<String> result = new HashSet<>();
         if (end < start) {
@@ -30,7 +31,7 @@ public class AllSubsets {
     }
 
     public static void main(String[] args) {
-        char[] arr = {'a', 'b', 'c', 'd'};
+        char[] arr = {'a', 'b', 'c'};
         AllSubsets subsets = new AllSubsets();
         Set<String> result = subsets.getSubsets(arr, 0, arr.length - 1);
         for (String s : result) {
