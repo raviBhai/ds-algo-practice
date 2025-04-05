@@ -1,5 +1,8 @@
 package com.dsalgo.dynamicProgramming;
 
+/**
+ * Number of ways I can get a sum of X with N coins, with infinite supply of each coin
+ */
 public class CoinChange {
 
     public int naiveCoinChange(int total, int[] coins, int index) {
@@ -63,5 +66,34 @@ public class CoinChange {
         System.out.println(coinChange.naiveCoinChange(total, coins, 0));
         coinChange.dpCoinChange(total, coins);
 
+    }
+}
+
+class RecursiveCoinChange {
+
+    // number of coins of each denomination are infinite
+
+    public static int solve(int[] arr, int sum, int n) {
+        if (sum == 0) {
+            return 1;
+        }
+
+        if (sum != 0 && n == 0) {
+            return 0;
+        }
+
+        if (arr[n - 1] > sum) {
+            return solve(arr, sum, n - 1);
+        } else {
+            return solve(arr, sum, n - 1) + solve(arr, sum - arr[n - 1], n);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        int[] coins = {2, 3, 5, 6, 8, 10};
+        int total = 10;
+
+        System.out.println(solve(coins, total, coins.length));
     }
 }
