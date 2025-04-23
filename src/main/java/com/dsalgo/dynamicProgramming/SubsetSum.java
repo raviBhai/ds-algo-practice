@@ -253,6 +253,10 @@ class MinimumSubsetSumDifference {
 }
 
 /**
+ * Given an array, divide it in 2 partitions such that
+ * their difference is equal to the given input difference.
+ * Find the total number of such ways to divide the array.
+ *
  * only 2 subsets, with each element of the array has to be in either of the 2 subsets
  */
 class NumberOfSubsetWithGivenDifference {

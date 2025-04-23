@@ -97,3 +97,52 @@ class RecursiveCoinChange {
         System.out.println(solve(coins, total, coins.length));
     }
 }
+
+class CoinChangeUsingUnboundedKnapsack {
+    int[] coins;
+    int total;
+    int n;
+    int[][] t;
+
+    public CoinChangeUsingUnboundedKnapsack(int[] coins, int total) {
+        this.coins = coins;
+        this.n = coins.length;
+        this.total = total;
+        this.t = new int[n+1][total+1];
+    }
+
+    public int solve() {
+        for (int j = 1; j < total+1; j++) {
+            t[0][j] = 0;
+        }
+
+        for (int i = 0; i < n+1; i++) {
+            t[i][0] = 1;
+        }
+
+        for (int i = 1; i < n+1; i++) {
+            for (int j = 1; j < total+1; j++) {
+                if (coins[i-1] <= j) {
+                    t[i][j] =
+                            t[i][j-coins[i-1]]
+                            +
+                            t[i-1][j]
+                    ;
+
+                } else {
+                    t[i][j] = t[i-1][j];
+                }
+            }
+        }
+        return t[n][total];
+    }
+
+    public static void main(String[] args) {
+        int[] coins = {2, 3, 5, 6, 8, 10};
+        int total = 10;
+
+        CoinChangeUsingUnboundedKnapsack unboundedKnapsack = new CoinChangeUsingUnboundedKnapsack(coins, total);
+        int solution = unboundedKnapsack.solve();
+        System.out.println("unbounded knapsack solution - " + solution);
+    }
+}

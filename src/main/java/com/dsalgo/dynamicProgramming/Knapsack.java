@@ -204,7 +204,7 @@ class Client {
  * With input-2 above, if length of rod is 10, LengthArray need not necessarily have 1 to 10 elements.
  * It can have elements such as LengthArray{3, 5, 6, 8} and PriceArray{10, 20, 30, 40}
  * This means, price of 3m is 10, price of 5m is 20 and so on...
- * 
+ *
  */
 class UnboundedKnapsack {
     int[] wt;
