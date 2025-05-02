@@ -34,37 +34,6 @@ public class MaximumSumPathLeafNode {
         }
     }
 
-    static int solve(Node node, int[] result) {
-        if (node == null) {
-            return 0;
-        }
-
-        else if (node.leftChild == null && node.rightChild == null) {
-            return node.data;
-        }
-
-        else {
-            int left = solve(node.leftChild, result);
-            int right = solve(node.rightChild, result);
-
-            if (node.leftChild == null) {
-                return right + node.data;
-            }
-
-            if (node.rightChild == null) {
-                return left + node.data;
-            }
-
-            int temp = Math.max(left, right) + node.data;
-
-            //int ans = Math.max(temp, left + right + node.data);
-            result[0] = Math.max(result[0], left + right + node.data);
-
-            return temp;
-        }
-
-    }
-
     public static void main(String[] args) {
         int[] arr = {0};
         Node root = Helper.getBTree();
@@ -94,5 +63,12 @@ public class MaximumSumPathLeafNode {
         int[] arr2 = {0};
         solve2(n1, arr2);
         System.out.println(arr2[0]);
+
+        Node a1 = new Node(1);
+        Node a2 = new Node(2);
+        a1.leftChild = a2;
+        int[] arr3 = {0};
+        solve2(a1, arr3);
+        System.out.println(arr3[0]);
     }
 }

@@ -1,5 +1,15 @@
 package com.dsalgo.dynamicProgramming.mcm;
 
+/**
+ * Minimum partitions required to break the input string
+ * such that the resultant sub-strings are palindromes
+ *
+ * Eg - nitix
+ * 2 partitions are needed to break it in 3 substrings - n, iti, x
+ * The 3 resultant sub-strings are palindromes
+ *
+ * Return minimum such partitions.
+ */
 public class PalindromePartition {
 
     private static int solve(String s, int i, int j) {

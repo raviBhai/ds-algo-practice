@@ -3,6 +3,11 @@ package com.dsalgo.dynamicProgramming.mcm;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Given a boolean expression inputStr that contain symbols and operators.
+ * The task is to count the number of ways we can parenthesize
+ * the expression so that the value of the expression evaluates to true.
+ */
 public class BooleanParenthezization {
 
     public static int solve(String s, int i, int j, boolean req) {

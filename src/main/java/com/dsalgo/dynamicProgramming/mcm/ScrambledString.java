@@ -49,9 +49,6 @@ public class ScrambledString {
     }
 }
 
-/**
- * This is not working
- */
 class MemoizedScrambledString {
 
     private static Map<String, Boolean> map = new HashMap<>();
@@ -65,7 +62,7 @@ class MemoizedScrambledString {
         }
         String key = a + "_" + b;
         if (map.containsKey(key)) {
-           // return true;
+            return map.get(key);    // map can have either TRUE or FALSE
         }
 
         boolean ans = false;
