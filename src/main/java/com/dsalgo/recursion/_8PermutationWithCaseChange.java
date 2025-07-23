@@ -3,7 +3,7 @@ package com.dsalgo.recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PermutationWithCaseChange {
+public class _8PermutationWithCaseChange {
 
     public static void solve(String s) {
         List<String> list = new ArrayList<>();

@@ -8,7 +8,7 @@ import java.util.Map;
  * The task is to count the number of ways we can parenthesize
  * the expression so that the value of the expression evaluates to true.
  */
-public class BooleanParenthezization {
+public class _3BooleanParenthezization {
 
     public static int solve(String s, int i, int j, boolean req) {
         if (i > j) {

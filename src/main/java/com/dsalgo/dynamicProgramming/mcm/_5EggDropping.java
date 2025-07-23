@@ -1,6 +1,6 @@
 package com.dsalgo.dynamicProgramming.mcm;
 
-public class EggDropping {
+public class _5EggDropping {
 
     public static int solve(int e, int f) {
         if (e == 1) {

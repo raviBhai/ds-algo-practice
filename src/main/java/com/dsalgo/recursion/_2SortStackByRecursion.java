@@ -2,7 +2,7 @@ package com.dsalgo.recursion;
 
 import java.util.Stack;
 
-public class SortStackByRecursion {
+public class _2SortStackByRecursion {
 
     public static void sort(Stack<Integer> stack) {
         if (stack.size() == 1) {

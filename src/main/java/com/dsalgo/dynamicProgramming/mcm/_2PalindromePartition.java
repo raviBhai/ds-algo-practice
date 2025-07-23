@@ -10,7 +10,7 @@ package com.dsalgo.dynamicProgramming.mcm;
  *
  * Return minimum such partitions.
  */
-public class PalindromePartition {
+public class _2PalindromePartition {
 
     private static int solve(String s, int i, int j) {
         if (i >= j) {
@@ -55,7 +55,7 @@ class MemoizationPalindromePartition {
             return 0;
         }
 
-        if (PalindromePartition.isPalindrome(s, i, j)) {
+        if (_2PalindromePartition.isPalindrome(s, i, j)) {
             return 0;
         }
         if (t[i][j] != -1) {
@@ -94,7 +94,7 @@ class OptimizedMemoizationPalindromePartition {
             return 0;
         }
 
-        if (PalindromePartition.isPalindrome(s, i, j)) {
+        if (_2PalindromePartition.isPalindrome(s, i, j)) {
             return 0;
         }
         if (t[i][j] != -1) {

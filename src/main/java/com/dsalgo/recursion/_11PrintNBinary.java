@@ -18,7 +18,7 @@ import java.util.List;
  * 110
  * 101
  */
-public class PrintNBinary {
+public class _11PrintNBinary {
 
     public static void solve(int n) {
         List<String> list = new ArrayList<>();

@@ -9,7 +9,7 @@ import java.util.List;
  * In the output, convert small to caps or vice-versa and print permutations
  * Output - "a1B2", "a1b2", "A1B2", "A1b2"
  */
-public class PermutationWithLetterCase {
+public class _9PermutationWithLetterCase {
 
     public static List<String> solve(String input) {
         List<String> list = new ArrayList<>();

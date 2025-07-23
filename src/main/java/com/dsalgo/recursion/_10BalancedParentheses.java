@@ -3,7 +3,7 @@ package com.dsalgo.recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BalancedParentheses {
+public class _10BalancedParentheses {
 
     public static void solve(int n) {
         List<String> list = new ArrayList<>();

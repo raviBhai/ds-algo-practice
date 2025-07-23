@@ -3,7 +3,7 @@ package com.dsalgo.recursion;
 
 import java.util.Stack;
 
-public class DeleteMiddleElementFromStack {
+public class _3DeleteMiddleElementFromStack {
 
     public static void solve(Stack<Integer> stack, int k) {
         if (k == 1) {

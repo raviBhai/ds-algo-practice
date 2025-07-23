@@ -13,7 +13,7 @@ public class Sudoku {
     }
 
     public void solve() {
-        if (solveSudoku(0, 0)) {
+        if (solveSudoku3(0, 0)) {
             printResult();
         } else {
             System.out.println("No solution");
@@ -84,7 +84,7 @@ public class Sudoku {
 
         //handle already filled values in given sudoku
         if (sudokuTable[rowIndex][columnIndex] != 0) {
-            return solveSudoku(rowIndex + 1, columnIndex);
+            return solveSudoku2(rowIndex + 1, columnIndex);
         }
 
         //else
@@ -92,7 +92,7 @@ public class Sudoku {
             if (valid(rowIndex, columnIndex, number)) {
                 sudokuTable[rowIndex][columnIndex] = number;
 
-                if (solveSudoku(rowIndex+1, columnIndex)) {
+                if (solveSudoku2(rowIndex+1, columnIndex)) {
                     return true;
                 }
 
@@ -104,28 +104,47 @@ public class Sudoku {
         return false;
     }
 
+    /**
+     * Time complexity
+     *
+     * If there are 3 cells to be filled and each cell can have 2 options (0 or 1), there will be 2^3 possible combinations.
+     * Let the 3 cells be - a, b, c
+     * a,b,c possible values - 0 or 1 for each of abc. Hence possible combinations are - 000, 001, 010, 011,..., 111 - total 8 combinations.
+     *
+     * So, 3 cells with each cell having 2 options, TC - 2^3
+     *
+     * Similarly, in sudoko, we have 81 cells, with each cell having 9 options.
+     * Hence TC will be 9^81
+     * In terms of N, it will be N^(N^2)
+     *
+     * @param rowIndex
+     * @param columnIndex
+     * @return
+     */
+
     //We will solve the sudoku columnwise. Traverse first column, then second, then third and so on..
     private boolean solveSudoku3(int rowIndex, int columnIndex) {
-        if (rowIndex == BOARD_SIZE && columnIndex+1 == BOARD_SIZE) {
+        if (rowIndex == BOARD_SIZE && columnIndex+1 == BOARD_SIZE) {    // if row == 9 and col == 8
             return true;
         }
 
         //if current column end is reached, then we need to go to the next column
-        if (rowIndex == BOARD_SIZE) {
-            return solveSudoku(0, columnIndex+1);
+        if (rowIndex == BOARD_SIZE) {    // if row == 9, col will be less than 8
+            return solveSudoku3(0, columnIndex+1);
         }
 
         //handle already filled values in given sudoku
         if (sudokuTable[rowIndex][columnIndex] != 0) {
-            return solveSudoku(rowIndex + 1, columnIndex);
+            return solveSudoku3(rowIndex + 1, columnIndex);
         }
 
         //else
         for (int number = MIN_NUM; number <= MAX_NUM; number++) {
+
             if (valid(rowIndex, columnIndex, number)) {
                 sudokuTable[rowIndex][columnIndex] = number;
 
-                if (solveSudoku(rowIndex+1, columnIndex)) {
+                if (solveSudoku3(rowIndex+1, columnIndex)) {
                     return true;
                 }
 

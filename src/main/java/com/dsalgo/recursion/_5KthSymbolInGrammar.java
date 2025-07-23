@@ -4,7 +4,7 @@ package com.dsalgo.recursion;
  * Write a function which takes 2 input integers N and K,
  * and then returns an output integer for the given N and K
  * N and K start from 1.
- * If N == 0 and K == 0, then return 1.
+ * If N == 1 and K == 1, then return 0.
  *
  * To get output for any N, get the output for the previous N.
  * Then start tracing the previous N from left to right.
@@ -31,7 +31,7 @@ package com.dsalgo.recursion;
  * the first half is same as that of N=3 and the second half is complement of 1st half.
  * Given this, check if K lies in first half or second half and then recurse.
  */
-public class KthSymbolInGrammar {
+public class _5KthSymbolInGrammar {
     public static int solve(int n, int k) {
         if (n == 1 && k == 1) {
             return 0;

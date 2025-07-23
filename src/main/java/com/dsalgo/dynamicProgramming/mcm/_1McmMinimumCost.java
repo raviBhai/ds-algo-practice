@@ -1,6 +1,6 @@
 package com.dsalgo.dynamicProgramming.mcm;
 
-public class McmMinimumCost {
+public class _1McmMinimumCost {
 
     public static int solve(int[] arr, int i, int j) {
         if (i >= j) {
@@ -53,6 +53,7 @@ class MemoizationMcmMinimumCost {
         t = new int[arr.length + 1][arr.length + 1];
         init(t);
         System.out.println(solve(arr, 1, arr.length - 1));
+        System.out.println("");
     }
 
     private static void init(int[][] t) {

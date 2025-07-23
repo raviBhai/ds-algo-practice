@@ -1,19 +1,26 @@
 package com.dsalgo.dynamicProgramming.mcm;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ScrambledString {
+public class _4ScrambledString {
 
     private static boolean solve(String a, String b) {
         if (a.equals(b)) {
             return true;
         }
+
+        // below if clause never passes. The recursive function solve(a,b) is always called with some non-empty a and b
+        if (a.length() == 0 || b.length() == 0) {
+            System.out.println();
+        }
+
+        // a and b will always have same length. IF a and b are not equal and their length is 1, it means, this is a base case
         if (a.length() <= 1) {
             return false;
         }
+
         boolean ans = false;
         int n = a.length();
         for (int i = 1; i <= n - 1; i++) {

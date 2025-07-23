@@ -3,7 +3,7 @@ package com.dsalgo.recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SortArrayByRecursion {
+public class _1SortArrayByRecursion {
 
     public static void sort(List<Integer> list) {
         if (list.size() == 1) {
@@ -35,5 +35,13 @@ public class SortArrayByRecursion {
         System.out.println("before sorting - " + list);
         sort(list);
         System.out.println("after sorting - " + list);
+
+
+        list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        insert(list, 4);
+        System.out.println(list);
     }
 }

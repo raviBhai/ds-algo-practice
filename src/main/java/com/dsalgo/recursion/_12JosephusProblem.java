@@ -34,7 +34,7 @@ import java.util.List;
  *
  *
  */
-public class JosephusProblem {
+public class _12JosephusProblem {
 
     public static void solve(int n, int k) {
         List<Integer> list = new ArrayList<>();

@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class AllSubsets {
+public class _6AllSubsets {
 
     public static void solve(String ip, String op) {
         if (ip.length() == 0) {

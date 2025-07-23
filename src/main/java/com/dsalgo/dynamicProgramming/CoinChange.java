@@ -1,5 +1,7 @@
 package com.dsalgo.dynamicProgramming;
 
+import java.util.*;
+
 /**
  * Number of ways I can get a sum of X with N coins, with infinite supply of each coin
  */
@@ -17,6 +19,22 @@ public class CoinChange {
 
     // https://leetcode.com/problems/combination-sum/solutions/16502/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/
     // Combination Sum : https://leetcode.com/problems/combination-sum/
+
+    public static void getAllCombinations(int total, int[] coins, List<Integer> temp, List<List<Integer>> result, int index) {
+        if (total == 0) {
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int i = index; i < coins.length; i++) {
+            if (coins[i] <= total) {
+                temp.add(coins[i]);
+                getAllCombinations(total - coins[i], coins, temp, result, i);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+
+
     public void dpCoinChange(int total, int[] coins) {
         int[][] dpTable = new int[coins.length + 1][total + 1];
 
@@ -66,6 +84,13 @@ public class CoinChange {
         System.out.println(coinChange.naiveCoinChange(total, coins, 0));
         coinChange.dpCoinChange(total, coins);
 
+        int[] coins1 = {2, 3, 5};
+        int total1 = 8;
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(coins1);
+        getAllCombinations(total1, coins1, temp, result, 0);
+        System.out.println(result);
     }
 }
 
@@ -144,5 +169,7 @@ class CoinChangeUsingUnboundedKnapsack {
         CoinChangeUsingUnboundedKnapsack unboundedKnapsack = new CoinChangeUsingUnboundedKnapsack(coins, total);
         int solution = unboundedKnapsack.solve();
         System.out.println("unbounded knapsack solution - " + solution);
+
+
     }
 }

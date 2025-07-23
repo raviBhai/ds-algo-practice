@@ -1,7 +1,6 @@
 package com.dsalgo.dynamicProgramming;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SubsetSum {
     private int sum;
@@ -16,6 +15,28 @@ public class SubsetSum {
 
     // https://leetcode.com/problems/combination-sum/solutions/16502/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/
     // check Combination Sum II (can't reuse same element) : https://leetcode.com/problems/combination-sum-ii/
+
+    public static void getAllCombinations(int total, int[] array, List<Integer> temp, List<List<Integer>> result, int index) {
+        if (total == 0) {
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+        Set<Integer> set = new HashSet<>();
+        for (int i = index; i < array.length; i++) {
+            if (array[i] <= total) {
+                // we can put this condition jst like used in _1PermutationsOfString
+                //however, as this array is sorted, we can avoid this set and use the if condition like in below comment
+                //if(i > index && array[i] == array[i-1]) continue;
+                if (!set.contains(array[i])) {
+                    set.add(array[i]);
+                    temp.add(array[i]);
+                    getAllCombinations(total - array[i], array, temp, result, i + 1);
+                    temp.remove(temp.size() - 1);
+                }
+            }
+        }
+    }
+
     public void solve() {
 
         //first row is false expect from element at 0,0
@@ -85,6 +106,16 @@ public class SubsetSum {
         subsetSum.solve();
         subsetSum.showResult();
         subsetSum.printdpTable();
+
+        int[] array = {2, 5, 2, 1, 2};
+        int sum1 = 5;
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(array);
+        getAllCombinations(sum1, array, temp, result, 0);
+        System.out.println(result);
+
+
     }
 }
 
@@ -116,6 +147,7 @@ class RecursionSubSetSum {
 /**
  * Given an array, divide the array in 2 partitions such that sum of elements
  * within each partition is same. All elements of the array must be divided in 2 partitions
+ * Output - Is it possible to divide the array in equal partitions
  */
 class EqualPartitionSubset {
 

@@ -3,7 +3,7 @@ package com.dsalgo.recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PermutationWithSpaces {
+public class _7PermutationWithSpaces {
 
     public static void solve(String ip, String op, List<String> list) {
         if (ip.length() == 0) {

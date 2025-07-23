@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LongestIncreasingSubsequence {
+public class     LongestIncreasingSubsequence {
     public static void main(String[] args) {
         int arr[] = {100, 10, 22, 9, 33, 21, 50, 41, 60, 80 };
         int n = arr.length;

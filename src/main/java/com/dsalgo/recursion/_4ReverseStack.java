@@ -2,7 +2,7 @@ package com.dsalgo.recursion;
 
 import java.util.Stack;
 
-public class ReverseStack {
+public class _4ReverseStack {
 
     public static void solve(Stack<Integer> stack) {
         if (stack.size() == 1) {
