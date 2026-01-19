@@ -7,30 +7,6 @@ import java.util.Set;
 
 public class _13Permutations {
 
-    public static void solve(String op, String ip, List<String> list) {
-        if (ip.length() == 0) {
-            list.add(op);
-            return;
-        }
-        for (int i = 0; i < ip.length(); i++) {
-            char ch = ip.charAt(i);
-            String op1 = op + ch;
-            String ip1 = ip.substring(0, i) + ip.substring(i + 1);
-            solve(op1, ip1, list);
-        }
-    }
-
-    public static List<String> solve(String ip) {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < ip.length(); i++) {
-            char ch = ip.charAt(i);
-            String op1 = "" + ch;
-            String ip1 = ip.substring(0, i) + ip.substring(i + 1);
-            solve(op1, ip1, list);
-        }
-        return list;
-    }
-
     public static void permutation(String ip, String op, List<String> list) {
         if (ip.length() == 0) {
             list.add(op);
@@ -73,15 +49,23 @@ public class _13Permutations {
      *  = 1 + (4) + (4 * 3) + (4 * 3 * 2) + ... + n!
      *
      *  For time complexity, take the maximum in the above sum and ignore the rest.
-     *  Rest can be ignored because for big values of n, the maximum value becomes very prminent and the
+     *  Rest can be ignored because for big values of n, the maximum value becomes very prominent and the
      *  rest becomes negligible
      *
      *  Hence, number of nodes can be approximated to n!
      *
-     *  Work done in one node = O(1)
-     *  Work done in all nodes = O(n!)
+     *  Work done in one node =
+     *  for loop runs from 0 to length - O(n)
+     *  within each iteration of the for loop, we do substring and concatenation.
+     *      Substring takes n time
+     *      concatenation takes n time
+     *      Time taken in each iteration - n+n = 2n = ~n
      *
-     *  TC = O(n!)
+     * As loop runs n times, and time in each iteration is also n, total time taken to do work in one node = n*n = n^2
+     *
+     *  Work done in all nodes = O(n^2 * n!)
+     *
+     *  TC = O(n^2 * n!)
 
      *
      * @param ip
@@ -106,9 +90,6 @@ public class _13Permutations {
     }
 
     public static void main(String[] args) {
-        System.out.println(solve("abc"));
-        //System.out.println(solve("abcd"));
-
         List<String> list = new ArrayList<>();
         permutation("abc", "", list);
         System.out.println(list);

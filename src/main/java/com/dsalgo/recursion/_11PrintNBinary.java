@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * For an N-digit binary number, all its prefixes should have more 1s than 0s
+ * For an N-digit binary number, all its prefixes should have number of 1s greater than or equal to number of 0s
  * Print all such N-digit binary numbers for given input N.
  *
  * All prefixes of 1101 -

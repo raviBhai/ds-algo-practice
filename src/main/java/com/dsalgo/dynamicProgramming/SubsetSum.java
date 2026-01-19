@@ -223,6 +223,8 @@ class NumberOfPartitions {
 }
 
 /**
+ * Partition a set into two subsets such that the difference of subset sums is minimum
+ *
  * This is only when array has +ve integers.
  * This will not work when array has -ve integers.
  */

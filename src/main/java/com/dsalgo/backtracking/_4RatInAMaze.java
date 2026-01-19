@@ -27,6 +27,23 @@ public class _4RatInAMaze {
      *
      * Hence, time complexity = O(4 ^ n^2)
      *
+     * Another way to calculate time complexity in a 2D matrix -
+     * Number of directions we can move from a cell, in this case, it is 4
+     * Total number of cells - n^2
+     *
+     * Let's say total number of cells were 9, then,
+     * Number of options in 1st cell - 4
+     * Number of options in 2nd cell - 4
+     * Number of options in 3rd cell - 4
+     * Number of options in 4th cell - 4
+     * Number of options in 5th cell - 4
+     * Number of options in 6th cell - 4
+     * Number of options in 7th cell - 4
+     * Number of options in 8th cell - 4
+     * Number of options in 9th cell - 4
+     *
+     * Total options across all cells - 4 * 4 * 4 * 4 * 4 * 4 * 4 * 4 * 4 = 4 ^ 9 = 4 ^ n^2
+     *
      * @param maze
      * @param n
      * @param x

@@ -1,5 +1,51 @@
 package com.dsalgo.dynamicProgramming.mcm;
 
+/**
+ * Take 3 matrices M1, M2, M3 with sizes
+ * M1 = 2x3
+ * M2 = 3x4
+ * M3 = 4x2
+ *
+ * For multiplication, numOfColumnsFromM1 should be equal to numOfRowsFromM2
+ * The resultant matrix has the size as numOfRowsFromM1 x numOfColumnsFromM2
+ *
+ * If M1 is of size p.q and M2 is of size q.r, then total number of multiplications done will be p.q.r
+ *
+ *
+ * We have to multiply M1.M2.M3, such that the total number of multiplications are minimum.
+ *
+ * We can do the multiplication in 2 ways, and both ways have different number of multiplications.
+ *
+ * Way-1 : (M1.M2)M3
+ * M1 x M2 = 2.3 x 3.4
+ * Total multiplications = 2.3.4 = 24
+ * Output matrix size = 2x4
+ *
+ * Then multiply this new matrix with M3
+ * 2.4 x 4.2
+ * Total multiplications = 2.4.2 = 16
+ * Output matrix size = 2x2
+ *
+ * Hence, total multiplications = 24+16 = 40
+ *
+ *
+ * Way-2 : M1(M2.M3)
+ * M2 x M3 = 3.4 x 4.2
+ * Total multiplications = 3.4.2 = 24
+ * Output matrix size = 3x2
+ *
+ * Then multiply this new matrix with M1
+ * 2.3 x 3.2
+ * Total multiplications = 2.3.2 = 12
+ * Output matrix size = 2x2
+ *
+ * Hence, total multiplications = 24+12 = 36
+ *
+ *
+ * Hence, the total number of multiplications depend on the order in which matrices are multiplied.
+ *
+ * We need to find the minimum of (40, 36)
+ */
 public class _1McmMinimumCost {
 
     public static int solve(int[] arr, int i, int j) {

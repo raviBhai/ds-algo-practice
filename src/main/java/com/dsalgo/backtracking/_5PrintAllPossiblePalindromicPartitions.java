@@ -14,7 +14,7 @@ public class _5PrintAllPossiblePalindromicPartitions {
 
     private static void solve(String s, int index, List<String> temp, List<List<String>> result) {
         if (index == s.length()) {
-            result.add(new ArrayList<>(temp));    // If new ArrayList is not used, then during the backtract when an element is removed from temp, it is also removed from result.
+            result.add(new ArrayList<>(temp));    // If new ArrayList is not used, then during backtracking when an element is removed from temp, it is also removed from result.
             return;
         }
         for (int i = index; i < s.length(); i++) {

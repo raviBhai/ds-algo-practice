@@ -12,6 +12,8 @@ public class _3_NDigitNumbersWithDigitsInIncreasingOrder {
      * Hence, number of nodes combined at all n levels will be 9^n
      *
      * Work done at each node is O(1)
+     * Work done at each node is the for loop that runs from 1 to 9.
+     * As the loop will run 9 times, this is constant, hence it is O(1)
      *
      * Hence, overall time complexity will be O(9^n)
      *

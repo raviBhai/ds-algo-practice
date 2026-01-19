@@ -55,7 +55,7 @@ public class QueensProblem {
             for (int rowIndex = 0; rowIndex < numOfQueens; rowIndex++) {
                 if (isPlaceValid(rowIndex, colIndex)) {
                     chessBoard[rowIndex][colIndex] = 1;
-                    if (setQueen(colIndex+1)) {
+                    if (setQueen2(colIndex+1)) {
                         return true;
                     }
                     //Backtrack !!!

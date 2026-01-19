@@ -30,6 +30,6 @@ public class _10BalancedParentheses {
     }
 
     public static void main(String[] args) {
-        solve(3);
+        solve(2);
     }
 }
