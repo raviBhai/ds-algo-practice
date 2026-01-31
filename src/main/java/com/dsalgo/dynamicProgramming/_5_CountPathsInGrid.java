@@ -21,7 +21,7 @@ number of ways to reach i,j = (number of ways to reach i, j-1) + (number of ways
 Step_3 : return the sum
 
 
-As this is counting the number of ways, it is similar to _PrintAllSubsequences_Input_Output._CountAllSubsequencesWithSumAsK_Pick_NonPick_
+As this is counting the number of ways, it is similar to _15_PrintSubsequences._PrintAllSubsequences_Input_Output._CountAllSubsequencesWithSumAsK_Pick_NonPick_
 
 In recursion, we start from top, and the moment we reach base case, it is one of the path.
 Base case for this problem is 0,0

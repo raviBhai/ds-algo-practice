@@ -4,7 +4,7 @@ package com.dsalgo.dynamicProgramming;
 /*
 
 Given a triangle. Start from the top cell and you can move down or down-right.
-End cell is any cell in the botton row.
+End cell is any cell in the bottom row.
 Return the minimum sum path when traversing
 
 1
