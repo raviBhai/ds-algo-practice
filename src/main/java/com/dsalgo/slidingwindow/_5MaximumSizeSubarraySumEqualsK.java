@@ -27,6 +27,9 @@ class WhenAllNumbersAreGreaterThanZero {
                     sum = sum - arr[i];
                     i++;
                 }
+                if (sum == k) {
+                    maxLen = Math.max(maxLen, j - i + 1);
+                }
                 j++;
             }
         }
@@ -35,6 +38,9 @@ class WhenAllNumbersAreGreaterThanZero {
     public static void main(String[] args) {
         int[] arr = {4, 1, 1, 1, 2, 3, 5};
         System.out.println(solve(arr, 5));
+
+        int[] arr1 = {1,2,3,4};
+        System.out.println(solve(arr1, 9));
     }
 }
 
