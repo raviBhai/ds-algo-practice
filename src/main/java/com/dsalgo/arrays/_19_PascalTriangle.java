@@ -61,7 +61,7 @@ class Problem1 {
     protected static int solve(int row, int col) {
         int n = row - 1;
         int r = col - 1;
-        return nCr(n, r);
+        return nCr_with_Nr_Dr(n, r);
     }
 
     private static int nCr(int n, int r) {
@@ -69,6 +69,19 @@ class Problem1 {
         for (int i = 0; i < r; i++) {
             ans = ans * (n-i);
             ans = ans / (i+1);
+        }
+
+        return ans;
+    }
+
+    private static int nCr_with_Nr_Dr(int n, int r) {
+        int ans = 1;
+        int numerator = n;
+        int denominator = 1;
+        for (int i = 1; i <= r; i++) {
+            ans = ans * numerator / denominator;
+            numerator--;
+            denominator++;
         }
 
         return ans;

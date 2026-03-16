@@ -91,6 +91,49 @@ public class _33_CheapestFlightsWithinKStops {
         return distance[target] == INF ? -1 : distance[target];
     }
 
+    private static int solve_useThis(int[][] edges, int numOfNodes, int source, int target, int k) {
+        List<List<Pair<Integer, Integer>>> adjacencyList = new ArrayList<>();
+        for (int i = 0; i <= numOfNodes; i++) {
+            adjacencyList.add(new ArrayList<>());
+        }
+        for (int i = 0; i < edges.length; i++) {
+            int[] edge = edges[i];
+            adjacencyList.get(edge[0]).add(new Pair<>(edge[1], edge[2]));
+        }
+
+        // node, cost
+        Deque<Pair<Integer, Integer>> deque = new LinkedList<>();
+        deque.add(new Pair<>(source, 0));
+
+        int[] distance = new int[numOfNodes];
+        Arrays.fill(distance, INF);
+        distance[source] = 0;
+
+        int stops = 0;
+        while (!deque.isEmpty() && stops <= k) {
+
+            int size = deque.size();
+            for (int i = 0; i < size; i++) {
+                Pair<Integer, Integer> poll = deque.poll();
+                Integer currentNode = poll.first;
+                Integer costTillCurrent = poll.second;
+
+                List<Pair<Integer, Integer>> neighbours = adjacencyList.get(currentNode);
+                for (Pair<Integer, Integer> neighbour : neighbours) {
+                    int costFromCurrentToNeighbour = neighbour.second;
+                    if (costTillCurrent + costFromCurrentToNeighbour < distance[neighbour.first]) {
+                        distance[neighbour.first] = costTillCurrent + costFromCurrentToNeighbour;
+                        deque.addLast(new Pair<>(neighbour.first, distance[neighbour.first]));
+                    }
+                }
+            }
+
+            stops++;
+        }
+
+        return distance[target] != INF ? distance[target] : -1;
+    }
+
     public static void main(String[] args) {
         int[][] edges = {
                 {0,1,5},
@@ -105,6 +148,8 @@ public class _33_CheapestFlightsWithinKStops {
         int target = 2;
         int k = 2;
         int answer = solve(edges, numOfNodes, source, target, k);
+        System.out.println(answer);
+        answer = solve_useThis(edges, numOfNodes, source, target, k);
         System.out.println(answer);
 
     }

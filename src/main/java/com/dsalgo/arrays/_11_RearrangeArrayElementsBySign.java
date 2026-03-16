@@ -9,7 +9,7 @@ Both +ve and -ve numbers are equal.
 Rearrange the array such that the +ve and -ve numbers are alternate but their order within themselves is not changed.
 
 input - 3, 1, -2, -5, 2, -4
-output - 2, -2, 1, -5, 2, -4
+output - 3, -2, 1, -5, 2, -4
 
 Order of +ve and -ve numbers is not changed.
 
