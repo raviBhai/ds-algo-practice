@@ -76,5 +76,7 @@ public class _6_NumberOfTimesASortedArrayIsRotated {
         int[] arr6 = {2,1}; //1
         System.out.println(solve(arr6));
 
+        int[] arr7 = {3,4,5,6,1,2}; //4
+        System.out.println(solve(arr7));
     }
 }

@@ -67,8 +67,9 @@ public class _30_PrintShortestPathUndirectedWeighted_Dijkstra {
         List<Integer> result = new ArrayList<>();
         result.add(target);
         while (target != source) {
-            result.add(parent[target]);
+            //result.add(parent[target]);   // this too will work
             target = parent[target];
+            result.add(target);
         }
         Collections.reverse(result);
         return result;
